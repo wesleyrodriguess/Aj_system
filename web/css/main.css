@@ -1,0 +1,475 @@
+.bg-barra-menu {
+    /* cor da barra do menu */
+    background: #194B94;
+}
+
+/*----------------------- Pagina Home -----------------------*/
+
+.bg-home {
+    background-color: #FCCA13;
+    min-height: 514px;
+    background-attachment: fixed;
+    font-family: 'Pridi', serif;
+}
+
+.bg-home-1 {
+    background: #FCCA13 url('../imagens/bg.jpg');
+    background-size: cover;
+    min-height: 600px;
+    font-family: 'Pridi', serif;
+}
+
+.mt-80 {
+    padding-top: 80px;
+}
+
+.img-home{
+    position: absolute;
+    right: 34px;
+    top: 155px;
+}
+
+.mt-80 h1.cor-escura-1 {
+    /* configuração da caixa 'Matricule-se na rockfeller' */
+    font-size: 3em;
+    font-weight: 900;
+}
+
+.col-md-12 p.cor-escura {
+    /* Certificado de Autorização */
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+/* tamanho das imagens da pagina home*/
+
+
+/* Fim das imagens home*/
+
+.cor-escura {
+    /* cor das letras azuls*/
+    color: #194B94;
+    font-weight: 900;
+}
+
+.cor-escura-1 {
+    /* cor das letras azuls*/
+    color: #F3D00D;
+    font-weight: 900;
+}
+
+p.cor-escura span {
+    /* span da contagem dos dias */
+    color: #0F89EE;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.col-md-6 .row {
+    /* espaço das imagens a baixo do 'Matricula-se na rockfeller' */
+    padding: 0 80px;
+}
+
+/*----------------------- Pagina Como Participar -----------------------*/
+
+.bg-como-participar {
+    background-color: #5E3186;
+    min-height: 514px;
+    background-attachment: fixed;
+}
+
+.font-participar {
+    /* fonte da pag participar */
+    font-weight: 700;
+    font-family: 'Pridi', sans-serif;
+}
+
+.link-indique{
+    font-weight: 700;
+    font-family: 'Pridi', sans-serif;
+    color: #FCCA13;
+}
+
+.link-indique:hover{
+    color: #f3b100;
+    text-decoration: underline;
+}
+
+.font-participar-2 {
+    /* fonte do paragrafo da pag participar */
+    font-weight: 700;
+    font-family: 'Pridi', sans-serif;
+    margin-top: 5px;
+    max-width: 164px;
+    margin-left: 35%;
+}
+
+span.font-participar {
+    margin-right: 30px;
+    font-size: 2.2em;
+}
+
+.col-md-3 .font {
+    /* cor da fonte 'Mais chances de ganahar' */
+    color: #FCCA13;
+}
+
+h3.font {
+    font-family: 'Pridi', serif;
+    font-weight: 900;
+    margin-top: 35px;
+}
+
+.espaco {
+    /* Configuraçoes Segunda linha */
+    margin-top: 50px !important;
+    padding-bottom: 20px;
+}
+.bg-como-participar .img-fluid{
+    max-width: 30%;
+}
+.bg-como-participar .img-fluid.img-estudante{
+    max-width: 80%;
+}
+
+/*----------------------- Pagina Premios -----------------------*/
+
+.bg-premios {
+    background-color: #11818F;
+    min-height: 514px;
+    background-attachment: fixed;
+}
+
+.bg-premios .img-fluid{
+    max-width: 70%;
+}
+
+/*----------------------- Pagina Ganhadores -----------------------*/
+
+.bg-ganhadores {
+    background-color: #194B94;
+    min-height: 514px;
+    background-attachment: fixed;
+}
+
+.caixa {
+    /* caixa dos ganhadores */
+    background: rgba(225, 227, 243, 0.1);
+    height: 108px;
+    width: 410px;
+    border-radius: 10px;
+    margin-left: 388px;
+    margin-top: -141px;
+    padding: 15px;
+    margin-bottom: 45px;
+}
+.bg-ganhadores .card{
+    background-color:rgba(225, 227, 243, 0.1);
+    color: #fff;
+    font-size: 0.8em;
+    font-family: 'Lato', sans-serif;
+    border-radius: 10px;
+    margin-left: 18px;
+    height: 111px;
+}
+.card-body{
+    padding: 0.6rem;
+}
+
+.bg-ganhadores img {
+    width: 200px;
+    margin-top: -34px;
+    margin-left: -358px;
+    position: absolute;
+    z-index: 1;
+}
+.img-thumbnail {
+    background-color: transparent;
+    border: none;
+}
+/*----------------------- Pagina Fale Conosco -----------------------*/
+
+.bg-fale-conosco {
+    background-color: #EE500F;
+    min-height: 514px;
+    background-attachment: fixed;
+}
+
+textarea{
+    resize: none;
+}
+
+/*----------------------- Css Geral -----------------------*/
+
+.row .col-md-12 h2 {
+    font-family: 'Pridi', serif;
+    color: #FCCA13;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 2.8em;
+}
+.row .col-md-6 h2{
+    font-family: 'Pridi', serif;
+    color: #194B94;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 2.8em;
+}
+
+.center {
+    text-align: center;
+}
+
+.esconder {
+    display: none !important;
+}
+.none-campo{
+    display: none;
+}
+
+.button{
+    width: 210px;
+    height: 45px;
+    background-color: #FCCA13;
+    color: #194B94;
+    border-radius: 10px;
+    box-shadow: 0 0.2rem 0.6rem rgba(0,0,0,.6);
+    border-width: 0;
+    font-size: 1.6em;
+}
+.button-cadastrar{
+    background-color: #194B94;
+    color: #fff;
+    font-size: 1.4em;
+}
+.form-group input{
+    border-radius: 10px;
+}
+.aluno .form-row .form-group.col-md-6{
+    padding: 0 20px;
+}
+.aluno .form-row .form-group.col-md-3{
+    padding: 0 20px;
+}
+
+.link a{
+    color: #FCCA13;
+}
+
+/*---------- pagina de registro ---------*/
+.bg-registro{
+    background-color: #FCCA13;
+    min-height: 500px;
+    background-attachment: fixed;
+    font-family: 'Pridi', serif;
+}
+ .bg-registro input{
+     margin-top: 24px;
+ }
+
+@media (min-width: 220px) and (max-width: 319.98px){
+
+    .xs{
+        justify-content: center!important;
+    }
+    .esconder {
+        display: block !important;
+    }
+    .display-none {
+        display: none !important;
+    }
+    .text-xs-center{
+        text-align: center !important;
+    }
+    .seta{
+        transform: rotate(90deg);
+    }
+    .img-home{
+        right: 34px;
+        top: 162px;
+        position: static;
+    }
+
+    .caixa {
+        /* caixa dos ganhadores */
+        background: rgba(225, 227, 243, 0.1);
+        height: 112px;
+        width: 281px;
+        border-radius: 10px;
+        margin-left: 0px;
+        margin-top: -141px;
+        padding: 15px;
+        margin-bottom: 45px;
+        font-size: 0.71em;
+        font-family: 'Lato', sans-serif;
+        display: inline-grid;
+    }
+
+    .bg-ganhadores img {
+        width: 150px;
+        /* margin-top: -34px;*/
+        margin-left: -358px;
+        /* position: absolute;*/
+        z-index: 1;
+        display: none;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 575.98px){
+    .xs{
+        justify-content: center!important;
+    }
+    .esconder {
+        display: block !important;
+    }
+    .display-none {
+        display: none !important;
+    }
+    .text-xs-center{
+        text-align: center !important;
+    }
+    .seta{
+        transform: rotate(90deg);
+    }
+    .img-home{
+        right: 34px;
+        top: 162px;
+        position: static;
+    }
+
+    .caixa {
+        /* caixa dos ganhadores */
+        background: rgba(225, 227, 243, 0.1);
+        height: 115px;
+        width: 300px;
+        border-radius: 10px;
+        margin-left: 0px;
+        margin-top: -141px;
+        padding: 15px;
+        margin-bottom: 45px;
+        font-size: 0.71em;
+        font-family: 'Lato', sans-serif;
+        display: inline-grid;
+        }
+
+        .bg-ganhadores img {
+        width: 150px;
+        /* margin-top: -34px;*/
+        margin-left: -358px;
+        /* position: absolute;*/
+        z-index: 1;
+        display: none;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .esconder {
+        display: block !important;
+    }
+    .display-none {
+        display: none !important;
+    }
+    .seta{
+        transform: rotate(90deg);
+    }
+    .img-home{
+        right: 34px;
+        top: 162px;
+        position: static;
+    }
+
+    .caixa {
+        /* caixa dos ganhadores */
+        background: rgba(225, 227, 243, 0.1);
+        height: 108px;
+        width: 347px;
+        border-radius: 10px;
+        margin-left: 103px;
+        margin-top: -141px;
+        padding: 15px;
+        margin-bottom: 45px;
+        font-size: 0.8em;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .bg-ganhadores img {
+        width: 200px;
+        /* margin-top: -34px;*/
+        margin-left: -358px;
+        /* position: absolute;*/
+        z-index: 1;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .esconder {
+        display: block !important;
+    }
+    .display-none {
+        display: none !important;
+    }
+    .img-home{
+        position: absolute;
+        right: 34px;
+        top: 356px;
+    }
+
+    .caixa {
+        /* caixa dos ganhadores */
+        background: rgba(225, 227, 243, 0.1);
+        height: 108px;
+        width: 386px;
+        border-radius: 10px;
+        margin-left: 192px;
+        margin-top: -141px;
+        padding: 15px;
+        margin-bottom: 45px;
+        font-size: 0.8em;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .bg-ganhadores img {
+        width: 200px;
+        /* margin-top: -34px;*/
+        margin-left: -358px;
+        /* position: absolute;*/
+        z-index: 1;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    ul.navbar-nav li a {
+        font-size: 0.74em;
+    }
+    .img-home{
+        position: absolute;
+        right: 34px;
+        top: 192px;
+    }
+
+    .caixa {
+        /* caixa dos ganhadores */
+        background: rgba(225, 227, 243, 0.1);
+        height: 108px;
+        width: 410px;
+        border-radius: 10px;
+        margin-left: 316px;
+        margin-top: -141px;
+        padding: 15px;
+        margin-bottom: 45px;
+        font-size: 0.8em;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .bg-ganhadores img {
+        width: 200px;
+        /* margin-top: -34px;*/
+        margin-left: -358px;
+        /* position: absolute;*/
+        z-index: 1;
+    }
+}
+
+@media (min-width: 1200px) {}

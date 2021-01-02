@@ -4,9 +4,10 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
-
+        db:
+            entity:
+                class: AjSystem\AdminBundle\Entity\User
+                property: email
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -14,11 +15,20 @@ security:
             security: false
 
         main:
-            anonymous: ~
-            # activate different ways to authenticate
-            logout_on_user_change: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+            anonymous: true
+            provider: db
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: /
+            logout:
+                path: /logout
+                #target: /admin
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+    encoders:
+        AjSystem\AdminBundle\Entity\User:
+            algorithm: bcrypt
+
+    access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #- { path: ^/adm, roles: [ROLE_ADMIN]}
