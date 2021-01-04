@@ -26,6 +26,12 @@ class Funcionario extends User
     protected $salario;
 
     /**
+     * @var float
+     * @ORM\Column(name="salario_mensal", type="decimal", precision=8, scale=2)
+     */
+    protected $salarioMensal;
+
+    /**
      * @var integer
      * @ORM\Column(name="porcentagem", type="integer")
      */
@@ -89,6 +95,30 @@ class Funcionario extends User
     public function getSalario(){
 
         return (strpos($this->salario, 'R$') === true) ? 'R$' . number_format($this->salario, 2, ',', '.') : $this->salario;
+    }
+
+    /**
+     * Set salarioMensal
+     *
+     * @param float $salarioMensal
+     *
+     * @return Funcionario
+     */
+    public function setSalarioMensal($salarioMensal){
+
+        $this -> salarioMensal = $salarioMensal;
+
+        return $this;
+    }
+
+    /**
+     * Get salarioMensal
+     * @return float
+     *
+     */
+    public function getSalarioMensal(){
+
+        return (strpos($this->salarioMensal, 'R$') === true) ? 'R$' . number_format($this->salarioMensal, 2, ',', '.') : $this->salarioMensal;
     }
 
     /**

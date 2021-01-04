@@ -29,6 +29,11 @@ class Servico
     private $nome;
 
     /**
+     * @ORM\Column(name="tipo", type="string", length=100)
+     */
+    private $tipo;
+
+    /**
      * @var float
      * @ORM\Column(name="valor", type="decimal", precision=8, scale=2)
      * @Assert\NotBlank
@@ -94,6 +99,24 @@ class Servico
     public function setNome($nome){
         $this->nome = $nome;
         $this->createdAt = new \DateTime();
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     * @return string
+     */
+    public function getTipo(){
+        return $this->tipo;
+    }
+
+    /**
+     * Set tipo
+     * @param string $tipo
+     * @return Servico
+     */
+    public function setTipo($tipo){
+        $this->tipo = $tipo;
         return $this;
     }
 

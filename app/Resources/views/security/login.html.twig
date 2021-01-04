@@ -5,10 +5,9 @@
 {% block body %}
 
     <div class="container">
-        <div class="row d-flex align-items-center justify-content-center " style="min-height: 90vh">
+        <img class="col-md-4 offset-md-4" src="{{ asset('imagens/logo.png') }}" style="margin-top: 10vh">
+        <div class="row d-flex align-items-center justify-content-center " style="min-height: 40vh">
             <div class="col-md-4 text-center">
-                {#<img src="{{ asset('imagens/logo.png') }}" style="background-color: #194B94">#}
-                <h1>AJ-System</h1>
                 <h3>Login</h3>
                 <hr>
                 <form action="{{ path('login') }}" method="post">
@@ -19,7 +18,7 @@
                         <label for="password">Senha:</label>
                         <input type="password" id="password" name="_password" class="form-control" />
 
-                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">logar</button>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px; padding: 0.375rem 2.75rem !important;">Entrar</button>
                         {% if error %}
                             <p class="text-danger">E-mail/Senha Invalida</p>
                         {% endif %}

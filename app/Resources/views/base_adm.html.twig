@@ -23,21 +23,19 @@
         {% endblock %}
     </head>
 
-    <body>
+    <body style="background-color: #f7f7f7;">
     <div class="d-flex" id="wrapper">
-
         <!-- Sidebar -->
         <div class="bg-white border-right" id="sidebar-wrapper">
             <div class="sidebar-heading bg-adm">
                 <span class="navbar-brand" href="#">
-                    {#<img src="{{ asset('imagens/logo.png') }}">#}
-                    <h4>Aj-System</h4>
+                    <img class="img-fluid" style="height: 37.4px"  src="{{ asset('imagens/logo.png') }}">
                 </span>
             </div>
             <div class="list-group list-group-flush">
                 <a href="{{ path('home') }}" class="list-group-item list-group-item-action bg-light">Home</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Caixa</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Funcionarios</a>
+                <a href="{{ path('funcionario_index') }}" class="list-group-item list-group-item-action bg-light">Funcionarios</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Serviços</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Contas a pagar</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Contas a receber</a>

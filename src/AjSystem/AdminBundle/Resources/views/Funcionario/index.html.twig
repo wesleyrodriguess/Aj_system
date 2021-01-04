@@ -1,0 +1,66 @@
+{% extends 'base_adm.html.twig' %}
+
+{% block title %}Funcionarios
+{% endblock %}
+
+{% block body %}
+    <div style=" margin-bottom: 50px">
+
+    </div>
+    <div class="card">
+        <div class="card-header ch-alt" style="border-bottom: none">
+            <h2>
+                Funcionarios
+            </h2>
+            <a class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Novo" style="float: right; margin-top: -25px" href="{{ path('novo_funcionario') }}"><i class="fas fa-plus-circle" ></i></a>
+        </div>
+
+        <div class="card-body card-padding card-filter">
+            <div class="row well">
+                <div class="col-md-4">
+                    <p>teste</p>
+                </div>
+                <div class="col-md-4">
+                    <p>teste</p>
+                </div>
+                <div class="col-md-4">
+                    <p>teste</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    {%  if funcionarios is not empty %}
+                        <table class="table table-hover">
+                            <thead>
+                            <tr style="background-color: #f2f7fd">
+                                <th scope="col">Nome</th>
+                                <th scope="col">telefone</th>
+                                <th scope="col">Salario a receber</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for f in funcionarios %}
+                                <tr>
+                                    <th scope="row">{{ f.nome }}</th>
+                                    <td>{{ f.telefone}}</td>
+                                    <td>{{ f.salarioMensal }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Sem funcionario no momento</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="navigation text-center mt-3">
+                {{ knp_pagination_render(funcionarios) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
