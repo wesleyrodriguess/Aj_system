@@ -37,14 +37,16 @@ class Servico
     private $status;
 
     /**
-     * @ORM\Column(name="tipo", type="string", length=100)
+     * @ORM\Column(name="tipo", type="string", length=100, nullable=true)
      */
     private $tipo;
 
     /**
-     * @var float
-     * @ORM\Column(name="valor", type="decimal", precision=8, scale=2)
-     * @Assert\NotBlank
+     * @var double
+     * @ORM\Column(name="valor", type="decimal", precision=10, scale=2)
+     * @Assert\NotBlank(
+     *     message="Informe o valor do serviço"
+     * )
      */
     protected $valor;
 
@@ -54,13 +56,13 @@ class Servico
     private $solicitante;
 
     /**
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      * @var \DateTime
      */
     private $createdAt;
@@ -75,6 +77,9 @@ class Servico
      * @var Funcionario
      * @ORM\ManyToOne(targetEntity="AjSystem\AdminBundle\Entity\Funcionario", inversedBy="servico")
      * @ORM\JoinColumn(name="responsavel_id", referencedColumnName="id")
+     * @Assert\NotBlank(
+     *     message="Informe o Responsavel pelo serviço"
+     * )
      **/
     private $responsavel;
 
@@ -159,8 +164,12 @@ class Servico
      */
     public function setValor($valor){
 
-        $this ->valor = $valor;
-
+        if (strpos($valor, 'R$') == false) {
+            $valor = str_replace('R$', '', $valor);
+            $valor = str_replace('.', '', $valor);
+            $valor = str_replace(',', '.', $valor);
+            $this->valor = (float) number_format((float) $valor, 2, '.', '');
+        }
         return $this;
     }
 
@@ -170,8 +179,9 @@ class Servico
      *
      */
     public function getValor(){
-
-        return (strpos($this->valor, 'R$') === true) ? 'R$' . number_format($this->valor, 2, ',', '.') : $this->valor;
+        return strpos($this->valor, 'R$') === false
+            ? 'R$' . number_format($this->valor, 2, ',', '.')
+            : $this->valor;
     }
 
     /**
@@ -216,7 +226,7 @@ class Servico
      *
      * @return Servico
      */
-    public function seDataFinalizacaor($dataFinalizacao){
+    public function seDataFinalizacao($dataFinalizacao){
 
         $this ->dataFinalizacao = $dataFinalizacao;
 

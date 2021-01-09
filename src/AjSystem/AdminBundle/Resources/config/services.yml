@@ -4,3 +4,15 @@ services:
     arguments:
       - "@doctrine.orm.entity_manager"
       - "@security.token_storage"
+
+  ajsystem_admin.servico:
+    class: AjSystem\AdminBundle\Services\Servico
+    arguments:
+      - "@doctrine.orm.entity_manager"
+      - "@security.token_storage"
+
+  ajsystem_admin.cliente:
+    class: AjSystem\AdminBundle\Services\Cliente
+    arguments:
+    - "@doctrine.orm.entity_manager"
+    - "@security.token_storage"

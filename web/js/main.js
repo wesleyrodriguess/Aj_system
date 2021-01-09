@@ -1,20 +1,12 @@
 
 // Mascara para telefone
-$(document).ready(function () {
-    $("input.phone-mask")
-        .mask("(99) 9999-9999?9")
-        .focusout(function (event) {
-            var target, phone, element;
-            target = (event.currentTarget) ? event.currentTarget : event.srcElement;
-            phone = target.value.replace(/\D/g, '');
-            element = $(target);
-            element.unmask();
-            if (phone.length > 10) {
-                element.mask("(99) 99999-999?9");
-            } else {
-                element.mask("(99) 9999-9999?9");
-            }
-        })
+$(function() {
+    $('.phone-mask').mask('(00) 00000-0000');
+    $('.money-mask').maskMoney({ prefix:'R$', thousands:'.', decimal:',', affixesStay: true });
+    $('.datepicker').datepicker({
+        language: 'pt-BR',
+        format: "dd/mm/yyyy"
+    });
 });
 
 

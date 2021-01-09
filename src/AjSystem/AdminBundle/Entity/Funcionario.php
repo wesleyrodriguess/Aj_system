@@ -30,11 +30,6 @@ class Funcionario extends User
      */
     protected $salarioMensal;
 
-    /**
-     * @var integer
-     * @ORM\Column(name="porcentagem", type="integer", nullable=true)
-     */
-    protected $porcentagem;
 
     /**
      * @ORM\OneToMany(targetEntity="AjSystem\AdminBundle\Entity\Servico", mappedBy="responsavel")
@@ -113,28 +108,9 @@ class Funcionario extends User
         return (strpos($this->salarioMensal, 'R$') === true) ? 'R$' . number_format($this->salarioMensal, 2, ',', '.') : $this->salarioMensal;
     }
 
-    /**
-     * @param int $porcentagem
-     * @return Funcionario
-     */
-    public function setId($porcentagem)
-    {
-        $this->porcentagem = $porcentagem;
-        return $this;
-    }
-
-    /**
-     * Get porcentagem
-     * @return integer
-     */
-    public function getPorcentagem(){
-        return $this->porcentagem;
-    }
-
     public function getConst(){
 
         return self::FUNCIONARIO;
-
     }
 
     /**

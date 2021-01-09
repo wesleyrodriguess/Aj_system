@@ -1,0 +1,62 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.nome.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.nome) }}
+            {{ form_widget(form.nome) }}
+            {{ form_errors(form.nome) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.solicitante.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.solicitante) }}
+            {{ form_widget(form.solicitante) }}
+            {{ form_errors(form.solicitante) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.responsavel.vars.errors|length %} has-error {% endif %}">
+            <label for="E-mail">Funcionario</label>
+            {{ form_widget(form.responsavel) }}
+            {{ form_errors(form.responsavel) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.cliente.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cliente) }}
+            {{ form_widget(form.cliente) }}
+            {{ form_errors(form.cliente) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.valor.vars.errors|length %} has-error {% endif %}">
+            <label for="E-mail">Valor do serviço</label>
+            {{ form_widget(form.valor) }}
+            {{ form_errors(form.valor) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.status.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.status) }}
+            {{ form_widget(form.status) }}
+            {{ form_errors(form.status) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.dataFinalizacao.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.dataFinalizacao) }}
+            {{ form_widget(form.dataFinalizacao) }}
+            {{ form_errors(form.dataFinalizacao) }}
+        </div>
+    </div>
+</div>
+{{ form_widget(form._token) }}
+<hr>
+<div class="form-actions">
+    <button type="submit" class="btn btn-info btn-fw waves-effect" onclick="this.form.submit(); this.disabled = true">
+       Salvar
+    </button>
+</div>
+</form>
