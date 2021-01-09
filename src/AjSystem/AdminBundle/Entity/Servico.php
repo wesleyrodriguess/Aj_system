@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Servico
 {
+
     /**
      * @var int
      *
@@ -24,9 +25,16 @@ class Servico
     private $id;
 
     /**
-     * @ORM\Column(name="nome", type="string", length=100)
+     * @ORM\Column(name="nome", type="string", length=100, nullable=true)
      */
     private $nome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
 
     /**
      * @ORM\Column(name="tipo", type="string", length=100)
@@ -41,7 +49,7 @@ class Servico
     protected $valor;
 
     /**
-     * @ORM\Column(name="solicitante", type="string", length=100)
+     * @ORM\Column(name="solicitante", type="string", length=100, nullable=true)
      */
     private $solicitante;
 
@@ -58,20 +66,24 @@ class Servico
     private $createdAt;
 
     /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="AjSystem\AdminBundle\Entity\Funcionario", cascade={"persist","remove"})
-     * @ORM\JoinTable(name="servico_funcionarios",
-     *      joinColumns={@ORM\JoinColumn(name="id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="funcionarios_id", referencedColumnName="id")}
-     * )
+     * @ORM\Column(name="data_finalizacao", type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $dataFinalizacao;
+
+    /**
+     * @var Funcionario
+     * @ORM\ManyToOne(targetEntity="AjSystem\AdminBundle\Entity\Funcionario", inversedBy="servico")
+     * @ORM\JoinColumn(name="responsavel_id", referencedColumnName="id")
      **/
     private $responsavel;
 
-    public function __construct()
-    {
-        $this->responsavel = new ArrayCollection();
-    }
+    /**
+     * @var Cliente
+     * @ORM\ManyToOne(targetEntity="AjSystem\AdminBundle\Entity\Cliente", inversedBy="servico")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", nullable=true)
+     */
+    private $cliente;
 
     /**
      * Get id.
@@ -99,6 +111,24 @@ class Servico
     public function setNome($nome){
         $this->nome = $nome;
         $this->createdAt = new \DateTime();
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param boolean $status
+     * @return Servico
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
         return $this;
     }
 
@@ -172,6 +202,28 @@ class Servico
     }
 
     /**
+     * Get dataFinalizacao
+     * @return \DateTime
+     */
+    public function getDataFinalizacao(){
+
+        return $this->dataFinalizacao;
+    }
+
+    /**
+     * Set dataFinalizacao
+     * @param \DateTime $dataFinalizacao
+     *
+     * @return Servico
+     */
+    public function seDataFinalizacaor($dataFinalizacao){
+
+        $this ->dataFinalizacao = $dataFinalizacao;
+
+        return $this;
+    }
+
+    /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
@@ -181,7 +233,7 @@ class Servico
     }
 
     /**
-     * @param ArrayCollection $responsavel
+     * @param mixed $responsavel
      * @return Servico
      */
     public function setResponsavel($responsavel)
@@ -191,18 +243,28 @@ class Servico
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
     public function getResponsavel()
     {
         return $this->responsavel;
     }
 
-    public function getResponsavelById($responsavelId) {
-        foreach ($this->responsavel as $responsavel) {
-            if($responsavel->getId() == $responsavelId)
-                return $responsavel;
-        }
-        return null;
+    /**
+     * @return mixed
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * @param mixed $cliente
+     * @return Servico
+     */
+    public function setCliente($cliente)
+    {
+        $this->cliente = $cliente;
+        return $this;
     }
 }

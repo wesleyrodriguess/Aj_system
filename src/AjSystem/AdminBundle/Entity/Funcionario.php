@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Funcionario extends User
 {
     /**
-     * @ORM\Column(name="telefone", type="string", length=100)
+     * @ORM\Column(name="telefone", type="string", length=100, nullable=true)
      */
     private $telefone;
 
@@ -37,9 +37,7 @@ class Funcionario extends User
     protected $porcentagem;
 
     /**
-     * @var Servico
-     *
-     * @ORM\ManyToMany(targetEntity="AjSystem\AdminBundle\Entity\Servico", mappedBy="responsavel")
+     * @ORM\OneToMany(targetEntity="AjSystem\AdminBundle\Entity\Servico", mappedBy="responsavel")
      */
     private $servico;
 
@@ -137,5 +135,23 @@ class Funcionario extends User
 
         return self::FUNCIONARIO;
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getServico()
+    {
+        return $this->servico;
+    }
+
+    /**
+     * @param mixed $servico
+     * @return Funcionario
+     */
+    public function setServico($servico)
+    {
+        $this->servico = $servico;
+        return $this;
     }
 }
