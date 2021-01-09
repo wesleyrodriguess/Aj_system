@@ -14,33 +14,27 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Funcionario extends User
 {
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(name="telefone", type="string", length=100)
      */
     private $telefone;
 
     /**
      * @var float
-     * @ORM\Column(name="salario", type="decimal", precision=8, scale=2)
-     * @Assert\NotBlank
+     * @ORM\Column(name="salario", type="decimal", precision=8, scale=2, nullable=true)
      */
     protected $salario;
 
     /**
      * @var float
-     * @ORM\Column(name="salario_mensal", type="decimal", precision=8, scale=2)
+     * @ORM\Column(name="salario_mensal", type="decimal", precision=8, scale=2, nullable=true)
      */
     protected $salarioMensal;
 
     /**
      * @var integer
-     * @ORM\Column(name="porcentagem", type="integer")
+     * @ORM\Column(name="porcentagem", type="integer", nullable=true)
      */
     protected $porcentagem;
-
-    /**
-     * @ORM\Column(name="active", type="boolean")
-     */
-    private $active;
 
     /**
      * @var Servico

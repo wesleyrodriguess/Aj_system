@@ -4,11 +4,22 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h2 class="text-center mt-5">
-            Novo Funcionario
-        </h2>
+    <div style=" margin-bottom: 50px">
+
     </div>
+    <div class="card">
+        <div class="card-header ch-alt" style="border-bottom: none">
+            <h2>
+                Novo Funcionario
+            </h2>
+        </div>
+
+        <div class="card-body card-padding">
+            {% include 'flashMessages.html.twig' %}
+            {% include '@Admin/Funcionario/_form.html.twig' %}
+        </div>
+    </div>
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

@@ -5,6 +5,7 @@ namespace AjSystem\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -40,10 +41,11 @@ abstract class User Implements UserInterface
      */
     private $nome;
 
-
     /**
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     *
+     * @Assert\NotBlank(
+     *     message="Insira um E-mail"
+     * )
      */
     private $email;
 

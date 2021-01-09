@@ -1,7 +1,7 @@
 
 // Mascara para telefone
 $(document).ready(function () {
-    $("input.telefone")
+    $("input.phone-mask")
         .mask("(99) 9999-9999?9")
         .focusout(function (event) {
             var target, phone, element;

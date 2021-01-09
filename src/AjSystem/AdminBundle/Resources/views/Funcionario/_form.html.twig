@@ -1,0 +1,32 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group fg-line {% if form.nome.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.nome) }}
+            {{ form_widget(form.nome) }}
+            {{ form_errors(form.nome) }}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group fg-line {% if form.email.vars.errors|length %} has-error {% endif %}">
+            <label for="E-mail">E-mail</label>
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group fg-line {% if form.telefone.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.telefone) }}
+            {{ form_widget(form.telefone) }}
+            {{ form_errors(form.telefone) }}
+        </div>
+    </div>
+</div>
+{{ form_widget(form._token) }}
+<hr>
+<div class="form-actions">
+    <button type="submit" class="btn btn-info btn-fw waves-effect" onclick="this.form.submit(); this.disabled = true">
+       Salvar
+    </button>
+</div>
+</form>

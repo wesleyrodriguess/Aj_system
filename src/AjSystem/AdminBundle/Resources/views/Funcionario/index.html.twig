@@ -28,6 +28,7 @@
                 </div>
             </div>
 
+            {% include 'flashMessages.html.twig' %}
             <div class="row">
                 <div class="col-md-12">
                     {%  if funcionarios is not empty %}
@@ -35,17 +36,27 @@
                             <thead>
                             <tr style="background-color: #f2f7fd">
                                 <th scope="col">Nome</th>
+                                <th scope="col">E-mail</th>
                                 <th scope="col">telefone</th>
                                 <th scope="col">Salario a receber</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for f in funcionarios %}
-                                <tr>
-                                    <th scope="row">{{ f.nome }}</th>
-                                    <td>{{ f.telefone}}</td>
-                                    <td>{{ f.salarioMensal }}</td>
-                                </tr>
+                                {% if f.active %}
+                                    <tr>
+                                        <th scope="row">{{ f.nome }}</th>
+                                        <th> {{ f.email }}</th>
+                                        <td>{{ f.telefone}}</td>
+                                        <td>{{ f.salarioMensal }}</td>
+                                        <td>
+                                            <a href="{{ path('editar_funcionario', {'id': f.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit text-primary"></i></span></a>
+
+                                            <a href="{{ path('deletar_funcionario', {'id': f.id}) }}"><span data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-times-circle text-danger" data-toggle="tooltip" data-placement="top" title="Deletar"></i></span></a>
+                                        </td>
+                                    </tr>
+                                {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
