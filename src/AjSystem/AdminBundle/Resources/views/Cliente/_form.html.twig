@@ -1,0 +1,85 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.nome.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.nome) }}
+            {{ form_widget(form.nome) }}
+            {{ form_errors(form.nome) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.email.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.telefone.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.telefone) }}
+            {{ form_widget(form.telefone) }}
+            {{ form_errors(form.telefone) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.cpfAndCnpj.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cpfAndCnpj) }}
+            {{ form_widget(form.cpfAndCnpj) }}
+            {{ form_errors(form.cpfAndCnpj) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.estado.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.estado) }}
+            {{ form_widget(form.estado) }}
+            {{ form_errors(form.estado) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.cidade.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cidade) }}
+            {{ form_widget(form.cidade) }}
+            {{ form_errors(form.cidade) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.cep.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.cep) }}
+            {{ form_widget(form.cep) }}
+            {{ form_errors(form.cep) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.bairro.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.bairro) }}
+            {{ form_widget(form.bairro) }}
+            {{ form_errors(form.bairro) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.logradouro.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.logradouro) }}
+            {{ form_widget(form.logradouro) }}
+            {{ form_errors(form.logradouro) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.numero.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.numero) }}
+            {{ form_widget(form.numero) }}
+            {{ form_errors(form.numero) }}
+        </div>
+    </div>
+</div>
+{{ form_widget(form._token) }}
+<hr>
+<div class="form-actions">
+    <button type="submit" class="btn btn-info btn-fw waves-effect" onclick="this.form.submit(); this.disabled = true">
+       Salvar
+    </button>
+</div>
+</form>

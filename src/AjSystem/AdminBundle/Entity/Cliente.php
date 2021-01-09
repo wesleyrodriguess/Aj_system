@@ -32,21 +32,22 @@ class Cliente
     private $email;
 
     /**
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      * @var \DateTime
      */
     private $createdAt;
 
     /**
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="active", type="boolean", nullable=true)
      */
     private $active;
+
 
     /**
      * @ORM\Column(name="telefone", type="string", length=100, nullable=true)
@@ -74,6 +75,11 @@ class Cliente
     private $logradouro;
 
     /**
+     * @ORM\Column(name="numero", type="string", length=100, nullable=true)
+     */
+    private $numero;
+
+    /**
      * @ORM\Column(name="cep", type="string", length=100, nullable=true)
      */
     private $cep;
@@ -87,6 +93,14 @@ class Cliente
      * @ORM\OneToMany(targetEntity="AjSystem\AdminBundle\Entity\Servico", mappedBy="cliente")
      */
     private $servico;
+
+    /**
+     * Cliente constructor
+     */
+    public function __construct()
+    {
+        $this->active = true;
+    }
 
     /**
      * Get id
@@ -168,7 +182,7 @@ class Cliente
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
-    public function setUpdate(){
+    public function setUpdatedAt(){
 
         $this->updatedAt = new \DateTime();
     }
@@ -231,9 +245,7 @@ class Cliente
 
     /**
      * Set estado
-     *
      * @param string $estado
-     *
      * @return Cliente
      */
     public function setEstado($estado)
@@ -292,6 +304,30 @@ class Cliente
     }
 
     /**
+     * Get numero
+     *
+     * @return string
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param string $numero
+     *
+     * @return Cliente
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
      * Get cep
      *
      * @return string
@@ -320,16 +356,14 @@ class Cliente
      *
      * @return string
      */
-    public function getcpfAndCnpj()
+    public function getCpfAndCnpj()
     {
         return $this->cpfAndCnpj;
     }
 
     /**
      * Set cpfAndCnpj
-     *
      * @param string $cpfAndCnpj
-     *
      * @return Cliente
      */
     public function setCpfAndCnpj($cpfAndCnpj)

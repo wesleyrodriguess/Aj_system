@@ -1,0 +1,83 @@
+{% extends 'base_adm.html.twig' %}
+
+{% block title %}Clientes
+{% endblock %}
+
+{% block body %}
+    <div style=" margin-bottom: 50px">
+    </div>
+    <div class="card">
+        <div class="card-header ch-alt" style="border-bottom: none; background-color: #fff">
+            <h2>
+                Clientes
+            </h2>
+            <a class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Novo" style="float: right; margin-top: -25px" href="{{ path('novo_cliente') }}"><i class="fas fa-plus-circle" ></i></a>
+        </div>
+
+        <div class="card-body card-padding">
+
+            {{ form_start(formFilter, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group  fg-line {% if formFilter.nome.vars.errors|length %} has-error {% endif %}">
+                            {{ form_widget(formFilter.nome) }}
+                            {{ form_errors(formFilter.nome) }}
+                        </div>
+                    </div>
+                    {{ form_widget(formFilter._token) }}
+                    <div class="form-group col-md-3 text-right ml-auto">
+                        <button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">
+                            <i class="fas fa-search"></i> Buscar</button>
+                        <a href="{{ path('cliente_index') }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Limpar">
+                            <i class="fas fa-eraser"></i> Limpar</a>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            {% include 'flashMessages.html.twig' %}
+            <div class="row">
+                <div class="col-md-12">
+                    {%  if clientes is not empty %}
+                        <table class="table table-hover">
+                            <thead>
+                            <tr style="background-color: #f2f7fd">
+                                <th scope="col">Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>CPF/CNPJ</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for c in clientes %}
+                                <tr>
+                                    <th scope="row">{{ c.nome }}</th>
+                                    <th>{{ c.email }}</th>
+                                    <th>{{ c.telefone }}</th>
+                                    <td>{{ c.cpfAndCnpj }}</td>
+                                    <td>
+                                        <a href="{{ path('editar_cliente', {'id': c.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit text-primary"></i></span></a>
+
+                                        <a href="{{ path('deletar_cliente', {'id': c.id}) }}"><span data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-times-circle text-danger" data-toggle="tooltip" data-placement="top" title="Deletar"></i></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Sem Cliente cadastrado no momento</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="navigation text-center mt-3">
+                {{ knp_pagination_render(clientes) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
