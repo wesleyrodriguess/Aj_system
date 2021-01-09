@@ -1,4 +1,6 @@
 services:
-#    admin.example:
-#        class: AjSystem\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+  ajsystem_admin.funcionario:
+    class: AjSystem\AdminBundle\Services\Funcionario
+    arguments:
+      - "@doctrine.orm.entity_manager"
+      - "@security.token_storage"

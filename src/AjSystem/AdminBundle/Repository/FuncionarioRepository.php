@@ -10,4 +10,22 @@ namespace AjSystem\AdminBundle\Repository;
  */
 class FuncionarioRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findFuncionario($nome = null){
+
+        $qb = $this->createQueryBuilder('f');
+
+        if (!empty($nome)){
+            $qb
+                ->where("f.active = 1")
+                ->where(
+                    $qb->expr()->like('f.nome', ':nome')
+                )
+                ->setParameter('nome',"%{$nome}%");
+        }
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
 }

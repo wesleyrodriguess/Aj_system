@@ -2,7 +2,9 @@
 
 namespace AjSystem\AdminBundle\Controller;
 
+use AjSystem\AdminBundle\Entity\Filter\FilterFuncionario;
 use AjSystem\AdminBundle\Entity\Funcionario;
+use AjSystem\AdminBundle\Form\Filter\FilterFuncionarioType;
 use AjSystem\AdminBundle\Form\FuncionarioType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -25,9 +27,19 @@ class FuncionarioController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $funcionarios = $this->getDoctrine()
-            ->getRepository(Funcionario::class)
-            ->findBy(['active' => true]);
+
+        $filter = new FilterFuncionario();
+        $formFilter = $this->createForm(FilterFuncionarioType::class, $filter);
+        $formFilter->handleRequest($request);
+
+        if ($formFilter->isSubmitted() and $formFilter->isValid()) {
+            $funcionarios = $this->getFuncionarioService()
+                ->getFilterFuncionario($filter->getNome());
+        }else {
+            $funcionarios = $this->getDoctrine()
+                ->getRepository(Funcionario::class)
+                ->findBy(['active' => true]);
+        }
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -36,7 +48,8 @@ class FuncionarioController extends Controller
             10
         );
         return array(
-            'funcionarios' => $pagination
+            'funcionarios' => $pagination,
+            'formFilter' => $formFilter->createView()
         );
 
     }
@@ -144,5 +157,11 @@ class FuncionarioController extends Controller
     {
         $this->get('session')->getFlashBag()->add('success', $message);
     }
+
+    private function getFuncionarioService()
+    {
+        return $this->get('ajsystem_admin.funcionario');
+    }
+
 }
 
