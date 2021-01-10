@@ -13,11 +13,27 @@ use AjSystem\AdminBundle\Entity\Funcionario;
  */
 class ServicoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findServicoAll(){
+
+        $qb = $this->createQueryBuilder('s');
+        $qb
+            ->orderBy('s.createdAt', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
     /**
      * @param \DateTime|null $dataDe
      * @param \DateTime|null $dataAt
      * @param Cliente|null $cliente
      * @param Funcionario|null $funcionario
+     * @param null $solicitante
+     * @param null $nome
+     * @param null $status
      */
     public function findServico(
         $status = null,
@@ -58,7 +74,7 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
 
         if ($funcionario){
             $qb
-                ->andWhere('s.funcionario = :funcionario')
+                ->andWhere('s.responsavel = :funcionario')
                 ->setParameter('funcionario', $funcionario);
         }
 
@@ -79,6 +95,65 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
         }
 
         $qb
+            ->orderBy('s.createdAt', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    public function findCaixa(){
+
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->where('s.status = 1');
+
+        $qb->select('SUM(s.valor)');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    public function findReceber(){
+
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->where('s.status = 2');
+
+        $qb->select('SUM(s.valor)');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    public function findTotal(){
+
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->where('s.status = 1');
+
+        $qb->select('SUM(s.valor)');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    public function findServicoReceber(){
+
+        $qb = $this->createQueryBuilder('s');
+        $qb
+            ->where('s.status = 2')
             ->orderBy('s.createdAt', 'DESC');
 
         return $qb

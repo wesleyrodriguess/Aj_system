@@ -30,4 +30,25 @@ class Servico
             ->findServico($status, $dataDe, $dataAt, $cliente, $funcionario, $nome,$solicitante);
     }
 
+    public function getCaixa(){
+        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findCaixa();
+
+        return $valor[0][1];
+    }
+
+    public function getReceber(){
+        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findReceber();
+
+        return $valor[0][1];
+    }
+
+    public function getTotal(){
+        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findTotal();
+
+        return $valor[0][1];
+    }
+
 }

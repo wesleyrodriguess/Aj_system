@@ -47,7 +47,7 @@ class ServicoController extends Controller
         }else {
             $servicos = $this->getDoctrine()
                 ->getRepository(Servico::class)
-                ->findAll();
+                ->findServicoAll();
         }
 
         $paginator = $this->get('knp_paginator');

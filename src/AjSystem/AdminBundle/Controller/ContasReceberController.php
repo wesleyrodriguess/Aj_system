@@ -2,7 +2,6 @@
 
 namespace AjSystem\AdminBundle\Controller;
 
-use AjSystem\AdminBundle\Entity\Caixa;
 use AjSystem\AdminBundle\Entity\Filter\FilterServico;
 use AjSystem\AdminBundle\Entity\Servico;
 use AjSystem\AdminBundle\Form\Filter\FilterServicoType;
@@ -16,13 +15,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 /**
- * @Route("/Caixa")
+ * @Route("/contas_receber")
  * @Template()
  */
-class CaixaController extends Controller
+class ContasReceberController extends Controller
 {
     /**
-     * @Route("/", name="caixa_index")
+     * @Route("/", name="receber_index")
      * @Security("has_role('ROLE_ADMINISTRADOR')")
      * @Method({"POST", "GET"})
      */
@@ -33,14 +32,10 @@ class CaixaController extends Controller
         $formFilter = $this->createForm(FilterServicoType::class, $filter);
         $formFilter->handleRequest($request);
 
-        $caixa = $this->getServicoService()->getCaixa();
-        $receber = $this->getServicoService()->getReceber();
-        $total = $this->getServicoService()->getTotal();
-
         if ($formFilter->isSubmitted() and $formFilter->isValid()) {
             $servicos = $this->getServicoService()
                 ->getFilterServico(
-                    $filter->getStatus(),
+                    2,
                     $filter->getDataDe(),
                     $filter->getDataAt(),
                     $filter->getCliente(),
@@ -51,7 +46,7 @@ class CaixaController extends Controller
         }else {
             $servicos = $this->getDoctrine()
                 ->getRepository(Servico::class)
-                ->findServicoAll();
+                ->findServicoReceber();
         }
 
         $paginator = $this->get('knp_paginator');
@@ -62,9 +57,6 @@ class CaixaController extends Controller
         );
         return array(
             'servicos' => $pagination,
-            'caixa' => $caixa,
-            'receber' => $receber,
-            'total' => $total,
             'formFilter' => $formFilter->createView()
         );
 
