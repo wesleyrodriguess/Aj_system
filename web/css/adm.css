@@ -26,6 +26,10 @@ body {
     background-color: #5bc0de;
 }
 
+.label-danger{
+    background-color: #d9534f;
+}
+
 .label{
     padding: 0.35em .6em;
     font-weight: bold;

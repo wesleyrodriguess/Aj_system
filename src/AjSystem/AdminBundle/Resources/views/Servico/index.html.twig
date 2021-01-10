@@ -64,14 +64,16 @@
                                     </td>
                                     <td>{{ s.responsavel.nome }}</td>
                                     <td>
-                                        {% if s.status %}<span class="label label-success" data-original-title="" title="">Paga</span>
-                                        {% else %}
+                                        {% if s.status == 1 %}<span class="label label-success" data-original-title="" title="">Paga</span>
+                                        {% elseif s.status == 2 %}
                                             <span class="label label-info" data-original-title="" title="">A receber</span>
+                                        {% elseif s.status == 0 %}
+                                            <span class="label label-danger" data-original-title="" title="">Cancelada</span>
                                         {% endif %}
                                     </td>
                                     <td>
                                         <a href="{{ path('editar_servico', {'id': s.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit text-primary"></i></span></a>
-                                        <a href="#"class="visu"><span data-toggle="tooltip" data-placement="top" title="Visualizar"><i class="fas fa-eye text-dark"></i></span></a>
+                                        <a href="{{ path('deletar_servico', {'id': s.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fas fa-times-circle text-danger" data-toggle="tooltip" data-placement="top" title="Deletar"></i></span></a>
                                     </td>
                                 </tr>
                             {% endfor %}

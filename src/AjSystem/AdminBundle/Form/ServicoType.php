@@ -26,7 +26,7 @@ class ServicoType extends AbstractType
                 'placeholder' => '',
                 'choices' => [
                     'Pago' => 1,
-                    'A Receber' => 0,
+                    'A Receber' => 2,
                 ],
             ))
             ->add('responsavel', EntityType::class, [

@@ -2,13 +2,10 @@
 
 namespace AjSystem\AdminBundle\Controller;
 
-use AjSystem\AdminBundle\Entity\Filter\FilterFuncionario;
+use AjSystem\AdminBundle\Entity\Caixa;
 use AjSystem\AdminBundle\Entity\Filter\FilterServico;
-use AjSystem\AdminBundle\Entity\Funcionario;
 use AjSystem\AdminBundle\Entity\Servico;
-use AjSystem\AdminBundle\Form\Filter\FilterFuncionarioType;
 use AjSystem\AdminBundle\Form\Filter\FilterServicoType;
-use AjSystem\AdminBundle\Form\FuncionarioType;
 use AjSystem\AdminBundle\Form\ServicoType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -66,6 +63,7 @@ class ServicoController extends Controller
     public function newAction(Request $request)
     {
         $servicos = new Servico();
+
         $form = $this->createForm(ServicoType::class, $servicos);
 
         $form->handleRequest($request);
@@ -74,12 +72,10 @@ class ServicoController extends Controller
             try {
                 $em = $this->getDoctrine()->getManager();
                 if ($form->getData()->isStatus() === null){
-                    $servicos->setStatus(false);
+                    $servicos->setStatus(2);
                 }
-
                 $em->persist($servicos);
                 $em->flush();
-
                 $this->addMensagemSucesso('Serviço cadastrado com sucesso');
             } catch (\Exception $e) {
                 $this->addMensagemErro("Erro ao Registrar Serviço");
@@ -122,6 +118,26 @@ class ServicoController extends Controller
     }
 
     /**
+     * @Route("/delete/{id}", name="deletar_servico")
+     * @Security("has_role('ROLE_ADMINISTRADOR')")
+     * @Method({"POST", "GET"})
+     */
+    public function deleteAction(Servico $servico)
+    {
+        try {
+
+            $servico->setStatus(0);
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $this->addMensagemSucesso('Servico Cancelado sucesso');
+        } catch (\Exception $e) {
+            $this->addMensagemErro("Erro ao Cancelar Servico");
+        }
+
+        return $this->redirectToRoute('servico_index');
+    }
+
+    /**
      * @param $message
      */
     private function addMensagemErro($message)
@@ -137,6 +153,15 @@ class ServicoController extends Controller
         $this->get('session')->getFlashBag()->add('success', $message);
     }
 
+    private function formartValor($valor){
+        if (strpos($valor, 'R$') == false) {
+            $valor = str_replace('R$', '', $valor);
+            $valor = str_replace('.', '', $valor);
+            $valor = str_replace(',', '.', $valor);
+            $valor = (float) number_format((float) $valor, 2, '.', '');
+        }
+        return $valor;
+    }
     private function getFuncionarioService()
     {
         return $this->get('ajsystem_admin.funcionario');

@@ -15,6 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Servico
 {
 
+    //Status 0 = CANCELADO
+    //Status 1 = PAGA
+    //Status 2 = A RECEBER
     /**
      * @var int
      *
@@ -30,9 +33,9 @@ class Servico
     private $nome;
 
     /**
-     * @var boolean
+     * @var int
      *
-     * @ORM\Column(name="status", type="boolean", nullable=true)
+     * @ORM\Column(name="status", type="integer", nullable=true)
      */
     private $status;
 
@@ -120,7 +123,7 @@ class Servico
     }
 
     /**
-     * @return boolean
+     * @return int
      */
     public function isStatus()
     {
@@ -128,7 +131,7 @@ class Servico
     }
 
     /**
-     * @param boolean $status
+     * @param int $status
      * @return Servico
      */
     public function setStatus($status)
