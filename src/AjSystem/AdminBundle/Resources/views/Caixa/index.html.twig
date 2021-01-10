@@ -19,7 +19,13 @@
                         <div class="card-body">
                             <h6>Caixa</h6>
                             <i class="fas fa-dollar-sign"></i>
-                            <span class="card-text">{{ caixa }}</span>
+                            <span class="card-text">
+                                {% if caixa %}
+                                    {{ caixa }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -28,7 +34,13 @@
                         <div class="card-body">
                             <h6>Contas a Receber</h6>
                             <i class="fas fa-dollar-sign"></i>
-                            <span class="card-text">{{ receber }}</span>
+                            <span class="card-text">
+                                {% if receber %}
+                                    {{ receber }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -52,7 +64,13 @@
                         <div class="card-body">
                             <h6>Receita Total</h6>
                             <i class="fas fa-dollar-sign"></i>
-                            <span class="card-text">{{ total }}</span>
+                            <span class="card-text">
+                                {% if total %}
+                                    {{ total }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                 </div>
