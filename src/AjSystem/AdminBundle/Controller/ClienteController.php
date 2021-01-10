@@ -4,12 +4,8 @@ namespace AjSystem\AdminBundle\Controller;
 
 use AjSystem\AdminBundle\Entity\Cliente;
 use AjSystem\AdminBundle\Entity\Filter\FilterCliente;
-use AjSystem\AdminBundle\Entity\Filter\FilterFuncionario;
-use AjSystem\AdminBundle\Entity\Funcionario;
 use AjSystem\AdminBundle\Form\ClienteType;
 use AjSystem\AdminBundle\Form\Filter\FilterClienteType;
-use AjSystem\AdminBundle\Form\Filter\FilterFuncionarioType;
-use AjSystem\AdminBundle\Form\FuncionarioType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -37,8 +33,8 @@ class ClienteController extends Controller
         $formFilter->handleRequest($request);
 
         if ($formFilter->isSubmitted() and $formFilter->isValid()) {
-            $clientes = $this->getFuncionarioService()
-                ->getFilterFuncionario($filter->getNome());
+            $clientes = $this->getClienteService()
+                ->getFilterCliente($filter->getNome(), $filter->getEmail(), $filter->getCpfAndCnpj());
         }else {
             $clientes = $this->getDoctrine()
                 ->getRepository(Cliente::class)

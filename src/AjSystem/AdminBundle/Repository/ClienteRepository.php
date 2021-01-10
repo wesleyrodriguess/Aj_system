@@ -10,4 +10,35 @@ namespace AjSystem\AdminBundle\Repository;
  */
 class ClienteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCliente($nome = null, $email = null, $cpfAndCnpj = null){
+
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->where("c.active = 1");
+
+        if (!empty($nome)){
+            $qb
+                ->andWhere(
+                    $qb->expr()->like('c.nome', ':nome')
+                )
+                ->setParameter('nome',"%{$nome}%");
+        }
+        if ($email) {
+            $qb
+                ->andWhere('c.email = :email')
+                ->setParameter('email', $email);
+        }
+
+        if ($cpfAndCnpj) {
+            $qb
+                ->andWhere('c.cpfAndCnpj = :cpfAndCnpj')
+                ->setParameter('cpfAndCnpj', $cpfAndCnpj);
+        }
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
 }

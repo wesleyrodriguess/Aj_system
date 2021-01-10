@@ -14,8 +14,16 @@ class FilterClienteType extends AbstractType
     {
         $builder
             ->add('nome', TextType::class, array(
-                'required' => false,
-                'attr' => ['placeholder' => 'Nome']
+                'label' => 'Nome',
+                'required' => false
+            ))
+            ->add('email', TextType::class, array(
+                'label' => 'E-mail',
+                'required' => false
+            ))
+            ->add('cpfAndCnpj', TextType::class, array(
+                'label' => 'CPF/CNPJ',
+                'required' => false
             ))
         ;
     }

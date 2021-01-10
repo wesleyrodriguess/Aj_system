@@ -21,8 +21,23 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group  fg-line {% if formFilter.nome.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(formFilter.nome) }}
                             {{ form_widget(formFilter.nome) }}
                             {{ form_errors(formFilter.nome) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group  fg-line {% if formFilter.email.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(formFilter.email) }}
+                            {{ form_widget(formFilter.email) }}
+                            {{ form_errors(formFilter.email) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group  fg-line {% if formFilter.cpfAndCnpj.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label(formFilter.cpfAndCnpj) }}
+                            {{ form_widget(formFilter.cpfAndCnpj) }}
+                            {{ form_errors(formFilter.cpfAndCnpj) }}
                         </div>
                     </div>
                     {{ form_widget(formFilter._token) }}

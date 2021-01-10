@@ -17,5 +17,10 @@ class Cliente
         $this->tokenStorage = $tokenStorage;
     }
 
+    public function getFilterCliente($nome = null, $email = null, $cpfAndCnpj = null){
+
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\Cliente::class)
+            ->findCliente($nome, $email, $cpfAndCnpj);
+    }
 
 }
