@@ -67,15 +67,15 @@ class ClienteController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() and $form->isValid()) {
-            try {
+           // try {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($cliente);
                 $em->flush();
 
-                $this->addMensagemSucesso('Cliente cadastrado com sucesso');
-            } catch (\Exception $e) {
-                $this->addMensagemErro("Erro ao cadastrar Cliente");
-            }
+               // $this->addMensagemSucesso('Cliente cadastrado com sucesso');
+          //  } catch (\Exception $e) {
+             //   $this->addMensagemErro("Erro ao cadastrar Cliente");
+          //  }
 
             return $this->redirectToRoute('cliente_index');
         }
