@@ -1,0 +1,128 @@
+{% extends 'base_adm.html.twig' %}
+
+{% block title %}Contas a Pagar
+{% endblock %}
+
+{% block body %}
+    <div style=" margin-bottom: 50px">
+    </div>
+    <div class="card">
+        <div class="card-header ch-alt" style="border-bottom: none; background-color: #fff">
+            <h2>
+                Contas a Pagar
+            </h2>
+            <a class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Novo" style="float: right; margin-top: -25px" href="{{ path('novo_conta_pagar') }}"><i class="fas fa-plus-circle" ></i></a>
+        </div>
+
+        <div class="card-body card-padding">
+
+            {{ form_start(formFilter, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="form-group  fg-line {% if formFilter.status.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.status) }}
+                            {{ form_widget(formFilter.status) }}
+                            {{ form_errors(formFilter.status) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group  fg-line {% if formFilter.dataDe.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.dataDe) }}
+                            {{ form_widget(formFilter.dataDe) }}
+                            {{ form_errors(formFilter.dataDe) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group  fg-line {% if formFilter.dataAt.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.dataAt) }}
+                            {{ form_widget(formFilter.dataAt) }}
+                            {{ form_errors(formFilter.dataAt) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group  fg-line {% if formFilter.tipo.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.tipo) }}
+                            {{ form_widget(formFilter.tipo) }}
+                            {{ form_errors(formFilter.tipo) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group  fg-line {% if formFilter.funcionario.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.funcionario) }}
+                            {{ form_widget(formFilter.funcionario) }}
+                            {{ form_errors(formFilter.funcionario) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_widget(formFilter._token) }}
+                <div class="row">
+                    <div class="form-group col-md-3 text-right ml-auto">
+                        <button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">
+                            <i class="fas fa-search"></i> Buscar</button>
+                        <a href="{{ path('conta_pagar_index') }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Limpar">
+                            <i class="fas fa-eraser"></i> Limpar</a>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            {% include 'flashMessages.html.twig' %}
+            <div class="row">
+                <div class="col-md-12">
+                    {%  if contas is not empty %}
+                        <table class="table table-hover">
+                            <thead>
+                            <tr style="background-color: #f2f7fd">
+                                <th scope="col">Nome</th>
+                                <th>Descrição</th>
+                                <th>Tipo</th>
+                                <th>Valor</th>
+                                <th>Funcionario</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for c in contas %}
+                                <tr>
+                                    <th scope="row">{{ c.nome }}</th>
+                                    <th>{{ c.descricao }}</th>
+                                    <th>{{ c.tipo }}</th>
+                                    <td>{{ c.valor }}</td>
+                                    <td>{% if c.funcionario %}
+                                            {{ c.funcionario.nome}}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if c.status == 1 %}<span class="label label-success" data-original-title="" title="">Paga</span>
+                                        {% elseif c.status == 2 %}
+                                            <span class="label label-info" data-original-title="" title="">A pagar</span>
+                                        {% elseif c.status == 0 %}
+                                            <span class="label label-danger" data-original-title="" title="">Cancelada</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('editar_conta_pagar', {'id': c.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit text-primary"></i></span></a>
+                                        <a href="{{ path('deletar_conta_pagar', {'id': c.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times-circle text-danger" data-toggle="tooltip" data-placement="top" title="Cancelar"></i></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Sem Contas a pagar no momento</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="navigation text-center mt-3">
+                {{ knp_pagination_render(contas) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

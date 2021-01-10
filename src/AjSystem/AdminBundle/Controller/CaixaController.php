@@ -34,6 +34,9 @@ class CaixaController extends Controller
         $formFilter->handleRequest($request);
 
         $caixa = $this->getServicoService()->getCaixa();
+        $aPagar = $this->getContaService()->getAPagar();
+        $pago = $this->getContaService()->getPago();
+        $caixaAtual = doubleval($caixa) - doubleval($pago);
         $receber = $this->getServicoService()->getReceber();
         $total = $this->getServicoService()->getTotal();
 
@@ -62,8 +65,9 @@ class CaixaController extends Controller
         );
         return array(
             'servicos' => $pagination,
-            'caixa' => $caixa,
+            'caixa' => $caixaAtual,
             'receber' => $receber,
+            'aPagar' => $aPagar,
             'total' => $total,
             'formFilter' => $formFilter->createView()
         );
@@ -79,9 +83,9 @@ class CaixaController extends Controller
         return $this->get('ajsystem_admin.servico');
     }
 
-    private function getClienteService()
+    private function getContaService()
     {
-        return $this->get('ajsystem_admin.cliente');
+        return $this->get('ajsystem_admin.conta');
     }
 
 }

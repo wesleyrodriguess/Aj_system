@@ -46,7 +46,6 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">E-mail</th>
                                 <th scope="col">telefone</th>
-                                <th scope="col">Salario a receber</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -57,7 +56,6 @@
                                         <th scope="row">{{ f.nome }}</th>
                                         <th> {{ f.email }}</th>
                                         <td>{{ f.telefone}}</td>
-                                        <td>{{ f.salarioMensal }}</td>
                                         <td>
                                             <a href="{{ path('editar_funcionario', {'id': f.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit text-primary"></i></span></a>
 

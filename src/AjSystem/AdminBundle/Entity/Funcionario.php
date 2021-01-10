@@ -18,23 +18,16 @@ class Funcionario extends User
      */
     private $telefone;
 
-    /**
-     * @var float
-     * @ORM\Column(name="salario", type="decimal", precision=8, scale=2, nullable=true)
-     */
-    protected $salario;
-
-    /**
-     * @var float
-     * @ORM\Column(name="salario_mensal", type="decimal", precision=8, scale=2, nullable=true)
-     */
-    protected $salarioMensal;
-
 
     /**
      * @ORM\OneToMany(targetEntity="AjSystem\AdminBundle\Entity\Servico", mappedBy="responsavel")
      */
     private $servico;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AjSystem\AdminBundle\Entity\ContasAPagar", mappedBy="funcionario")
+     */
+    private $salario;
 
     /**
      * Set telefone
@@ -61,56 +54,21 @@ class Funcionario extends User
     }
 
     /**
-     * Set salarilo
-     *
-     * @param float $salario
-     *
+     * @return mixed
+     */
+    public function getSalario()
+    {
+        return $this->salario;
+    }
+
+    /**
+     * @param mixed $salario
      * @return Funcionario
      */
-    public function setSalario($salario){
-
-        $this -> salario = $salario;
-
+    public function setSalario($salario)
+    {
+        $this->salario = $salario;
         return $this;
-    }
-
-    /**
-     * Get salario
-     * @return float
-     *
-     */
-    public function getSalario(){
-
-        return (strpos($this->salario, 'R$') === true) ? 'R$' . number_format($this->salario, 2, ',', '.') : $this->salario;
-    }
-
-    /**
-     * Set salarioMensal
-     *
-     * @param float $salarioMensal
-     *
-     * @return Funcionario
-     */
-    public function setSalarioMensal($salarioMensal){
-
-        $this -> salarioMensal = $salarioMensal;
-
-        return $this;
-    }
-
-    /**
-     * Get salarioMensal
-     * @return float
-     *
-     */
-    public function getSalarioMensal(){
-
-        return (strpos($this->salarioMensal, 'R$') === true) ? 'R$' . number_format($this->salarioMensal, 2, ',', '.') : $this->salarioMensal;
-    }
-
-    public function getConst(){
-
-        return self::FUNCIONARIO;
     }
 
     /**
@@ -129,5 +87,10 @@ class Funcionario extends User
     {
         $this->servico = $servico;
         return $this;
+    }
+
+    public function getConst(){
+
+        return self::FUNCIONARIO;
     }
 }

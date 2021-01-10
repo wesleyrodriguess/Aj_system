@@ -16,3 +16,9 @@ services:
     arguments:
     - "@doctrine.orm.entity_manager"
     - "@security.token_storage"
+
+  ajsystem_admin.conta:
+    class: AjSystem\AdminBundle\Services\ContaPagar
+    arguments:
+    - "@doctrine.orm.entity_manager"
+    - "@security.token_storage"

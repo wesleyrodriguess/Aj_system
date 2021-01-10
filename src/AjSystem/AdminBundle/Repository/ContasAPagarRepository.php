@@ -2,6 +2,8 @@
 
 namespace AjSystem\AdminBundle\Repository;
 
+use AjSystem\AdminBundle\Entity\Funcionario;
+
 /**
  * ContasAPagarRepository
  *
@@ -10,4 +12,104 @@ namespace AjSystem\AdminBundle\Repository;
  */
 class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findContaAll(){
+
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->orderBy('c.created', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    /**
+     * @param \DateTime|null $dataDe
+     * @param \DateTime|null $dataAt
+     * @param Funcionario|null $funcionario
+     * @param null $tipo
+     * @param null $status
+     */
+    public function findConta(
+        $status = null,
+        \DateTime $dataDe = null,
+        \DateTime $dataAt = null,
+        $tipo = null,
+        Funcionario $funcionario = null
+    ){
+        try {
+            $emConfig = $this->getEntityManager()->getConfiguration();
+            $emConfig->addCustomDatetimeFunction('date', 'DoctrineExtensions\Query\Mysql\Date');
+        } catch (\Exception $e) {
+
+        }
+        $qb = $this->createQueryBuilder('c');
+
+        if ($status !== null){
+            $qb
+                ->where('c.status = :status')
+                ->setParameter('status', $status);
+        }
+
+        if ($dataDe and $dataAt){
+            $qb
+                ->andWhere('c.created >= :dataDe')
+                ->andWhere('c.created <= :dataAt')
+                ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
+                ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
+        }
+
+        if ($tipo){
+            $qb
+                ->andWhere('c.tipo = :tipo')
+                ->setParameter('tipo', $tipo);
+        }
+
+        if ($funcionario){
+            $qb
+                ->andWhere('c.responsavel = :funcionario')
+                ->setParameter('funcionario', $funcionario);
+        }
+
+        $qb
+            ->orderBy('c.created', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    public function findPagar(){
+
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->where('c.status = 2');
+
+        $qb->select('SUM(c.valor)');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    public function findPago(){
+
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->where('c.status = 1');
+
+        $qb->select('SUM(c.valor)');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
 }
