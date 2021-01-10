@@ -19,13 +19,60 @@
             {{ form_start(formFilter, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
             <div class="well">
                 <div class="row">
+                    <div class="col-sm-1">
+                        <div class="form-group  fg-line {% if formFilter.status.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.status) }}
+                            {{ form_widget(formFilter.status) }}
+                            {{ form_errors(formFilter.status) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group  fg-line {% if formFilter.dataDe.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.dataDe) }}
+                            {{ form_widget(formFilter.dataDe) }}
+                            {{ form_errors(formFilter.dataDe) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group  fg-line {% if formFilter.dataAt.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.dataAt) }}
+                            {{ form_widget(formFilter.dataAt) }}
+                            {{ form_errors(formFilter.dataAt) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group  fg-line {% if formFilter.cliente.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.cliente) }}
+                            {{ form_widget(formFilter.cliente) }}
+                            {{ form_errors(formFilter.cliente) }}
+                        </div>
+                    </div>
                     <div class="col-sm-4">
+                        <div class="form-group  fg-line {% if formFilter.responsavel.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.responsavel) }}
+                            {{ form_widget(formFilter.responsavel) }}
+                            {{ form_errors(formFilter.responsavel) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
                         <div class="form-group  fg-line {% if formFilter.nome.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.nome) }}
                             {{ form_widget(formFilter.nome) }}
                             {{ form_errors(formFilter.nome) }}
                         </div>
                     </div>
-                    {{ form_widget(formFilter._token) }}
+                    <div class="col-sm-2">
+                        <div class="form-group  fg-line {% if formFilter.solicitante.vars.errors|length %} has-error {% endif %}">
+                            {{ form_label (formFilter.solicitante) }}
+                            {{ form_widget(formFilter.solicitante) }}
+                            {{ form_errors(formFilter.solicitante) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_widget(formFilter._token) }}
+                <div class="row">
                     <div class="form-group col-md-3 text-right ml-auto">
                         <button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">
                             <i class="fas fa-search"></i> Buscar</button>

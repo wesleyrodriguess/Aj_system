@@ -14,9 +14,10 @@ class FuncionarioRepository extends \Doctrine\ORM\EntityRepository
 
         $qb = $this->createQueryBuilder('f');
 
+        $qb->where("f.active = 1");
+
         if (!empty($nome)){
             $qb
-                ->where("f.active = 1")
                 ->where(
                     $qb->expr()->like('f.nome', ':nome')
                 )

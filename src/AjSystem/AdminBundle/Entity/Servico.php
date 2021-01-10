@@ -71,12 +71,6 @@ class Servico
     private $createdAt;
 
     /**
-     * @ORM\Column(name="data_finalizacao", type="datetime", nullable=true)
-     * @var \DateTime
-     */
-    private $dataFinalizacao;
-
-    /**
      * @var Funcionario
      * @ORM\ManyToOne(targetEntity="AjSystem\AdminBundle\Entity\Funcionario", inversedBy="servico")
      * @ORM\JoinColumn(name="responsavel_id", referencedColumnName="id")
@@ -212,28 +206,6 @@ class Servico
     public function getCreatedAt(){
 
         return $this->createdAt;
-    }
-
-    /**
-     * Get dataFinalizacao
-     * @return \DateTime
-     */
-    public function getDataFinalizacao(){
-
-        return $this->dataFinalizacao;
-    }
-
-    /**
-     * Set dataFinalizacao
-     * @param \DateTime $dataFinalizacao
-     *
-     * @return Servico
-     */
-    public function seDataFinalizacao($dataFinalizacao){
-
-        $this ->dataFinalizacao = $dataFinalizacao;
-
-        return $this;
     }
 
     /**

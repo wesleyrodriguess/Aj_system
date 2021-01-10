@@ -41,10 +41,12 @@
                         </div>
                     </div>
                     {{ form_widget(formFilter._token) }}
+                </div>
+                <div class="row">
                     <div class="form-group col-md-3 text-right ml-auto">
                         <button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">
                             <i class="fas fa-search"></i> Buscar</button>
-                        <a href="{{ path('cliente_index') }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Limpar">
+                        <a href="{{ path('servico_index') }}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Limpar">
                             <i class="fas fa-eraser"></i> Limpar</a>
                     </div>
                 </div>

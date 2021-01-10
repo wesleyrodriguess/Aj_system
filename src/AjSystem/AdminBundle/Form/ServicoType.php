@@ -6,11 +6,9 @@ use AjSystem\AdminBundle\Entity\Servico;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use AjSystem\AdminBundle\Entity\Funcionario;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -41,14 +39,6 @@ class ServicoType extends AbstractType
                 'class' => 'AjSystem\AdminBundle\Entity\Cliente',
                 'choice_label' => 'nome'
             ])
-            ->add('dataFinalizacao', DateType::class, array(
-                'format' => 'dd/MM/yyyy',
-                'html5' => false,
-                'widget' => 'single_text',
-                'label' => 'Data',
-                'mapped' => false,
-                'attr' => ['class' => 'datepicker']
-            ))
             ->add('valor', TextType::class, [
                 'label' => 'Valor do serviço',
                 'attr' => ['class' => 'money-mask'],

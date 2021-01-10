@@ -2,6 +2,9 @@
 
 namespace AjSystem\AdminBundle\Repository;
 
+use AjSystem\AdminBundle\Entity\Cliente;
+use AjSystem\AdminBundle\Entity\Funcionario;
+
 /**
  * ServicoRepository
  *
@@ -10,4 +13,78 @@ namespace AjSystem\AdminBundle\Repository;
  */
 class ServicoRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param \DateTime|null $dataDe
+     * @param \DateTime|null $dataAt
+     * @param Cliente|null $cliente
+     * @param Funcionario|null $funcionario
+     */
+    public function findServico(
+        $status = null,
+        \DateTime $dataDe = null,
+        \DateTime $dataAt = null,
+        Cliente $cliente = null,
+        Funcionario $funcionario = null,
+        $nome = null,
+        $solicitante = null
+    ){
+        try {
+            $emConfig = $this->getEntityManager()->getConfiguration();
+            $emConfig->addCustomDatetimeFunction('date', 'DoctrineExtensions\Query\Mysql\Date');
+        } catch (\Exception $e) {
+
+        }
+        $qb = $this->createQueryBuilder('s');
+
+        if ($status !== null){
+            $qb
+                ->where('s.status = :status')
+                ->setParameter('status', $status);
+        }
+
+        if ($dataDe and $dataAt){
+            $qb
+                ->andWhere('s.createdAt >= :dataDe')
+                ->andWhere('s.createdAt <= :dataAt')
+                ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
+                ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
+        }
+
+        if ($cliente){
+            $qb
+                ->andWhere('s.cliente = :cliente')
+                ->setParameter('cliente', $cliente);
+        }
+
+        if ($funcionario){
+            $qb
+                ->andWhere('s.funcionario = :funcionario')
+                ->setParameter('funcionario', $funcionario);
+        }
+
+        if (!empty($nome)){
+            $qb
+                ->where(
+                    $qb->expr()->like('s.nome', ':nome')
+                )
+                ->setParameter('nome',"%{$nome}%");
+        }
+
+        if (!empty($solicitante)){
+            $qb
+                ->where(
+                    $qb->expr()->like('s.solicitante', ':solicitante')
+                )
+                ->setParameter('solicitante',"%{$solicitante}%");
+        }
+
+        $qb
+            ->orderBy('s.createdAt', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
 }

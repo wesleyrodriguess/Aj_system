@@ -17,5 +17,17 @@ class Servico
         $this->tokenStorage = $tokenStorage;
     }
 
+    public function getFilterServico(
+        $status = null,
+        $dataDe = null,
+        $dataAt = null,
+        $cliente = null,
+        $funcionario = null,
+        $nome = null,
+        $solicitante = null)
+    {
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findServico($status, $dataDe, $dataAt, $cliente, $funcionario, $nome,$solicitante);
+    }
 
 }

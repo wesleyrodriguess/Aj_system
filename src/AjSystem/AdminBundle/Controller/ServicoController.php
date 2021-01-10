@@ -35,7 +35,15 @@ class ServicoController extends Controller
 
         if ($formFilter->isSubmitted() and $formFilter->isValid()) {
             $servicos = $this->getServicoService()
-                ->getFilterServico($filter->getNome());
+                ->getFilterServico(
+                    $filter->getStatus(),
+                    $filter->getDataDe(),
+                    $filter->getDataAt(),
+                    $filter->getCliente(),
+                    $filter->getResponsavel(),
+                    $filter->getNome(),
+                    $filter->getSolicitante()
+                );
         }else {
             $servicos = $this->getDoctrine()
                 ->getRepository(Servico::class)

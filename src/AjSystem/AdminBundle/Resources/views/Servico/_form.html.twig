@@ -44,13 +44,6 @@
             {{ form_errors(form.status) }}
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="form-group fg-line {% if form.dataFinalizacao.vars.errors|length %} has-error {% endif %}">
-            {{ form_label(form.dataFinalizacao) }}
-            {{ form_widget(form.dataFinalizacao) }}
-            {{ form_errors(form.dataFinalizacao) }}
-        </div>
-    </div>
 </div>
 {{ form_widget(form._token) }}
 <hr>
