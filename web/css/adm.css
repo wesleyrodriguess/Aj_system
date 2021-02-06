@@ -9,6 +9,23 @@ body {
     font-size: 14px;
 }
 
+.text-right {
+    text-align: right;
+}
+
+.pagination {
+    border-radius: 0;
+}
+
+.pagination {
+    padding-left: 0;
+    margin: 18px 0;
+}
+
+.breadcrumb>li, .pagination {
+    display: inline-block;
+}
+
 .button{
     width: 157px;
     height: 41px;
