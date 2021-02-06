@@ -15,9 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Servico
 {
 
-    //Status 0 = CANCELADO
-    //Status 1 = PAGA
-    //Status 2 = A RECEBER
     /**
      * @var int
      *
@@ -32,6 +29,9 @@ class Servico
      */
     private $nome;
 
+    //Status 0 = CANCELADO
+    //Status 1 = PAGA
+    //Status 2 = A RECEBER
     /**
      * @var int
      *
@@ -39,8 +39,11 @@ class Servico
      */
     private $status;
 
+    //Tipo 0 = CARTAO CREDITO
+    //Status 1 = CARTAO DEBITO
+    //Status 2 = DINHEIRO
     /**
-     * @ORM\Column(name="tipo", type="string", length=100, nullable=true)
+     * @ORM\Column(name="tipo", type="integer", length=100, nullable=true)
      */
     private $tipo;
 
@@ -57,6 +60,12 @@ class Servico
      * @ORM\Column(name="solicitante", type="string", length=100, nullable=true)
      */
     private $solicitante;
+
+    /**
+     * @ORM\Column(name="data_servico", type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $dataServico;
 
     /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
@@ -136,7 +145,7 @@ class Servico
 
     /**
      * Get tipo
-     * @return string
+     * @return int
      */
     public function getTipo(){
         return $this->tipo;
@@ -144,7 +153,7 @@ class Servico
 
     /**
      * Set tipo
-     * @param string $tipo
+     * @param int $tipo
      * @return Servico
      */
     public function setTipo($tipo){
@@ -206,6 +215,24 @@ class Servico
     public function getCreatedAt(){
 
         return $this->createdAt;
+    }
+    /**
+     * Set dataServico
+     * @param \DateTime $dataServico
+     * @return Servico
+     */
+    public function setDataServico($dataServico){
+        $this->dataServico = $dataServico;
+        return $this;
+    }
+
+    /**
+     * Get dataServico
+     * @return \DateTime
+     */
+    public function getDataServico(){
+
+        return $this->dataServico;
     }
 
     /**

@@ -60,8 +60,8 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
 
         if ($dataDe and $dataAt){
             $qb
-                ->andWhere('s.createdAt >= :dataDe')
-                ->andWhere('s.createdAt <= :dataAt')
+                ->andWhere('s.dataServico >= :dataDe')
+                ->andWhere('s.dataServico <= :dataAt')
                 ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
                 ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
         }

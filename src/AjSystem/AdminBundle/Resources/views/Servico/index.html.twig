@@ -92,9 +92,10 @@
                             <tr style="background-color: #f2f7fd">
                                 <th scope="col">Nome</th>
                                 <th>Valor</th>
-                                <th>Solicitante</th>
+                                <th>Data</th>
                                 <th>Cliente</th>
                                 <th>Responsavel</th>
+                                <th>Tipo</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
@@ -104,12 +105,32 @@
                                 <tr>
                                     <th scope="row">{{ s.nome }}</th>
                                     <th>{{ s.valor }}</th>
-                                    <th>{{ s.solicitante }}</th>
+                                    <th>{% if s.dataServico %}
+                                            {{ s.dataServico | date("d/m/Y")}}
+                                        {% else %}
+                                            {{ s.createdAt | date("d/m/Y")}}
+                                        {% endif %}
+                                    </th>
                                     <td>{% if s.cliente %}
                                             {{ s.cliente.nome}}
                                         {% endif %}
                                     </td>
                                     <td>{{ s.responsavel.nome }}</td>
+                                    <td>
+                                        <span class="label" style="background-color: #495057" data-original-title="" title="">
+                                            {% if s.tipo == 1 or s.tipo == 0 %}
+                                                    <i class="fab fa-cc-visa"></i>
+                                                        {% if s.tipo == 0 %}
+                                                            Crédito
+                                                        {% else %}
+                                                            Débito
+                                                        {% endif %}
+                                            {% else %}
+                                                <i class="fas fa-dollar-sign"></i>
+                                                    Dinheiro
+                                            {% endif %}
+                                        </span>
+                                    </td>
                                     <td>
                                         {% if s.status == 1 %}<span class="label label-success" data-original-title="" title="">Paga</span>
                                         {% elseif s.status == 2 %}

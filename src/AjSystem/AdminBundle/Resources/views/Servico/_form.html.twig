@@ -8,10 +8,10 @@
         </div>
     </div>
     <div class="col-sm-3">
-        <div class="form-group fg-line {% if form.solicitante.vars.errors|length %} has-error {% endif %}">
-            {{ form_label(form.solicitante) }}
-            {{ form_widget(form.solicitante) }}
-            {{ form_errors(form.solicitante) }}
+        <div class="form-group fg-line {% if form.dataServico.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.dataServico) }}
+            {{ form_widget(form.dataServico) }}
+            {{ form_errors(form.dataServico) }}
         </div>
     </div>
     <div class="col-sm-3">
@@ -42,6 +42,20 @@
             {{ form_label(form.status) }}
             {{ form_widget(form.status) }}
             {{ form_errors(form.status) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.tipo.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.tipo) }}
+            {{ form_widget(form.tipo) }}
+            {{ form_errors(form.tipo) }}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.solicitante.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.solicitante) }}
+            {{ form_widget(form.solicitante) }}
+            {{ form_errors(form.solicitante) }}
         </div>
     </div>
 </div>

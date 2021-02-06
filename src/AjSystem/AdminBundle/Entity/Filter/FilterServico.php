@@ -8,6 +8,8 @@ class FilterServico
     private $cliente;
     private $responsavel;
     private $status;
+    private $tipo;
+    private $dataServico;
     private $dataDe;
     private $dataAt;
 
@@ -124,5 +126,36 @@ class FilterServico
         $this->dataAt = $dataAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param mixed $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataServico()
+    {
+        return $this->dataServico;
+    }
+
+    /**
+     * @param mixed $dataServico
+     */
+    public function setDataServico($dataServico)
+    {
+        $this->dataServico = $dataServico;
+    }
 
 }

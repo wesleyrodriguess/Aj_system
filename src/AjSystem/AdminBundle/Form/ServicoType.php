@@ -19,6 +19,14 @@ class ServicoType extends AbstractType
         $builder
             ->add('nome', TextType::class, array('label' => 'Nome'))
             ->add('solicitante', TextType::class, array('label' => 'Solicitante'))
+            ->add('dataServico', DateType::class, [
+                'format' => 'dd/MM/yyyy',
+                'html5' => false,
+                'widget' => 'single_text',
+                'label' => 'Data',
+                'required' => false,
+                'attr' => ['class' => 'datepicker', 'autocomplete' => 'off']
+            ])
             ->add('status', ChoiceType::class, array(
                 'label' => 'status',
                 'placeholder' => '',
@@ -44,6 +52,15 @@ class ServicoType extends AbstractType
                 'attr' => ['class' => 'money-mask'],
                 'required' => false
             ])
+            ->add('tipo', ChoiceType::class, array(
+                'label' => 'Tipo de pagamento',
+                'placeholder' => '',
+                'choices' => [
+                    'Dinheiro' => 2,
+                    'Cartão de Crédito' => 0,
+                    'Cartão de Débito' => 1,
+                ],
+            ))
         ;
     }
 
