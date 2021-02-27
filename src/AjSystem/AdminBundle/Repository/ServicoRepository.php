@@ -27,6 +27,37 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
+     * @param Date|null $dataDe
+     * @param \DateTime|null $dataAt
+     * @return mixed
+     */
+    public function findCaixaMensal( \DateTime $dataDe = null, \DateTime $dataAt = null){
+        try {
+            $emConfig = $this->getEntityManager()->getConfiguration();
+            $emConfig->addCustomDatetimeFunction('date', 'DoctrineExtensions\Query\Mysql\Date');
+        } catch (\Exception $e) {
+
+        }
+
+        $qb = $this->createQueryBuilder('s');
+
+        $qb
+            ->where('s.status = 1')
+            ->andWhere('s.dataServico >= :dataDe')
+            ->andWhere('s.dataServico <= :dataAt')
+            ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
+            ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
+
+        $qb->select('SUM(s.valor)');
+
+        return $qb
+            ->getQuery()
+            ->useQueryCache(true)
+            ->useResultCache(true)
+            ->getResult();
+    }
+
+    /**
      * @param \DateTime|null $dataDe
      * @param \DateTime|null $dataAt
      * @param Cliente|null $cliente

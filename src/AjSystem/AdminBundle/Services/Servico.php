@@ -37,6 +37,14 @@ class Servico
         return $valor[0][1];
     }
 
+    public function getCaixaMensal($inicioMes = null, $fimMes = null){
+
+        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findCaixaMensal($inicioMes, $fimMes);
+
+        return $valor[0][1];
+    }
+
     public function getReceber(){
         $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
             ->findReceber();

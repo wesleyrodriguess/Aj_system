@@ -40,6 +40,16 @@ class CaixaController extends Controller
         $receber = $this->getServicoService()->getReceber();
         $total = $this->getServicoService()->getTotal();
 
+        $inicioMes = date("Y-m-01");
+        $fimMes = date("Y-m-t");
+
+        $inicioMes = explode('-', $inicioMes);
+        $fimMes = explode('-', $fimMes);
+
+        $inicioMes = new \DateTime(''.$inicioMes[0].'-'.$inicioMes[1].'-'.$inicioMes[2].'');
+        $fimMes = new \DateTime(''.$fimMes[0].'-'.$fimMes[1].'-'.$fimMes[2].'');
+        $caixaMensal = $this->getServicoService()->getCaixaMensal($inicioMes, $fimMes);
+
         if ($formFilter->isSubmitted() and $formFilter->isValid()) {
             $servicos = $this->getServicoService()
                 ->getFilterServico(
@@ -51,6 +61,8 @@ class CaixaController extends Controller
                     $filter->getNome(),
                     $filter->getSolicitante()
                 );
+            $caixaMensal = $this->getServicoService()->getCaixaMensal($filter->getDataDe(), $filter->getDataAt());
+
         }else {
             $servicos = $this->getDoctrine()
                 ->getRepository(Servico::class)
@@ -66,6 +78,7 @@ class CaixaController extends Controller
         return array(
             'servicos' => $pagination,
             'caixa' => $caixaAtual,
+            'caixaMensal' => $caixaMensal,
             'receber' => $receber,
             'aPagar' => $aPagar,
             'total' => $total,
