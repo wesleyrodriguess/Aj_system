@@ -40,7 +40,7 @@ class CaixaController extends Controller
         $receber = $this->getServicoService()->getReceber();
         $total = $this->getServicoService()->getTotal();
 
-        $inicioMes = date("Y-m-01");
+        $inicioMes = date("Y-m-02");
         $fimMes = date("Y-m-t");
 
         $inicioMes = explode('-', $inicioMes);

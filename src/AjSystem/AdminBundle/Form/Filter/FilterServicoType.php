@@ -68,8 +68,10 @@ class FilterServicoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => FilterServico::class
+            'data_class' => FilterServico::class,
+            'method' => 'GET'
         ));
     }
+
 
 }

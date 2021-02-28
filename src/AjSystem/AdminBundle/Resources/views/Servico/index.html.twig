@@ -15,6 +15,11 @@
         </div>
 
         <div class="card-body card-padding">
+            <div class="row">
+                <div class="col-md-3">
+                    <b style="font-size: 20px">Total: <i class="fas fa-dollar-sign"></i>{{ valorServico }}</b>
+                </div>
+            </div>
 
             {{ form_start(formFilter, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
             <div class="well">
@@ -118,9 +123,9 @@
                                     <td>{{ s.responsavel.nome }}</td>
                                     <td>
                                         <span class="label" style="background-color: #495057" data-original-title="" title="">
-                                            {% if s.tipo == 1 or s.tipo == 0 %}
+                                            {% if s.tipo == 1 or s.tipo is same as(0) %}
                                                     <i class="fab fa-cc-visa"></i>
-                                                        {% if s.tipo == 0 %}
+                                                        {% if s.tipo is same as(0) %}
                                                             Crédito
                                                         {% else %}
                                                             Débito

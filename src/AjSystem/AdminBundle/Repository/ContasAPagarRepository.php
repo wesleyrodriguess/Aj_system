@@ -15,8 +15,10 @@ class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
     public function findContaAll(){
 
         $qb = $this->createQueryBuilder('c');
+
+        $qb-> where('c.status !=0');
         $qb
-            ->orderBy('c.created', 'DESC');
+            ->orderBy('c.dataPago', 'ASC');
 
         return $qb
             ->getQuery()
@@ -55,8 +57,8 @@ class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
 
         if ($dataDe and $dataAt){
             $qb
-                ->andWhere('c.created >= :dataDe')
-                ->andWhere('c.created <= :dataAt')
+                ->andWhere('c.dataPago >= :dataDe')
+                ->andWhere('c.dataPago <= :dataAt')
                 ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
                 ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
         }
@@ -69,12 +71,12 @@ class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
 
         if ($funcionario){
             $qb
-                ->andWhere('c.responsavel = :funcionario')
+                ->andWhere('c.funcionario = :funcionario')
                 ->setParameter('funcionario', $funcionario);
         }
 
         $qb
-            ->orderBy('c.created', 'DESC');
+            ->orderBy('c.dataPago', 'DESC');
 
         return $qb
             ->getQuery()

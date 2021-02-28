@@ -24,7 +24,7 @@ class ServicoController extends Controller
     /**
      * @Route("/", name="servico_index")
      * @Security("has_role('ROLE_ADMINISTRADOR')")
-     * @Method({"POST", "GET"})
+     * @Method("GET")
      */
     public function indexAction(Request $request)
     {
@@ -32,6 +32,8 @@ class ServicoController extends Controller
         $filter = new FilterServico();
         $formFilter = $this->createForm(FilterServicoType::class, $filter);
         $formFilter->handleRequest($request);
+
+        $valorServico = 0;
 
         if ($formFilter->isSubmitted() and $formFilter->isValid()) {
             $servicos = $this->getServicoService()
@@ -44,6 +46,12 @@ class ServicoController extends Controller
                     $filter->getNome(),
                     $filter->getSolicitante()
                 );
+            $valorServico = $this->getServicoService()
+                ->getCaixaMensal(
+                    $filter->getDataDe(),
+                    $filter->getDataAt(),
+                    $filter->getCliente(),
+                    $filter->getResponsavel());
         }else {
             $servicos = $this->getDoctrine()
                 ->getRepository(Servico::class)
@@ -54,11 +62,12 @@ class ServicoController extends Controller
         $pagination = $paginator->paginate(
             $servicos,
             $request->query->get('page', 1),
-            10
+            20
         );
         return array(
             'servicos' => $pagination,
-            'formFilter' => $formFilter->createView()
+            'formFilter' => $formFilter->createView(),
+            'valorServico' => $valorServico
         );
 
     }

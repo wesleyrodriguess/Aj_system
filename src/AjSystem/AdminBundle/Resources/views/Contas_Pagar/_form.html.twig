@@ -44,6 +44,13 @@
             {{ form_errors(form.funcionario) }}
         </div>
     </div>
+    <div class="col-sm-3">
+        <div class="form-group fg-line {% if form.dataPago.vars.errors|length %} has-error {% endif %}">
+            {{ form_label(form.dataPago) }}
+            {{ form_widget(form.dataPago) }}
+            {{ form_errors(form.dataPago) }}
+        </div>
+    </div>
 </div>
 {{ form_widget(form._token) }}
 <hr>

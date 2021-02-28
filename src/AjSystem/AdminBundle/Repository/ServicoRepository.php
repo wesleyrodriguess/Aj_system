@@ -17,7 +17,7 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
 
         $qb = $this->createQueryBuilder('s');
         $qb
-            ->orderBy('s.createdAt', 'DESC');
+            ->orderBy('s.dataServico', 'DESC');
 
         return $qb
             ->getQuery()
@@ -27,11 +27,13 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
-     * @param Date|null $dataDe
+     * @param \DateTime|null $dataDe
      * @param \DateTime|null $dataAt
+     * @param Cliente|null $cliente
+     * @param Funcionario|null $funcionario
      * @return mixed
      */
-    public function findCaixaMensal( \DateTime $dataDe = null, \DateTime $dataAt = null){
+    public function findCaixaMensal( \DateTime $dataDe = null, \DateTime $dataAt = null, $cliente = null, $funcionario = null){
         try {
             $emConfig = $this->getEntityManager()->getConfiguration();
             $emConfig->addCustomDatetimeFunction('date', 'DoctrineExtensions\Query\Mysql\Date');
@@ -40,13 +42,27 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
         }
 
         $qb = $this->createQueryBuilder('s');
+        $qb->where('s.status != 0');
 
-        $qb
-            ->where('s.status = 1')
-            ->andWhere('s.dataServico >= :dataDe')
-            ->andWhere('s.dataServico <= :dataAt')
-            ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
-            ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
+        if ($dataDe and $dataAt) {
+            $qb
+                ->andWhere('s.dataServico >= :dataDe')
+                ->andWhere('s.dataServico <= :dataAt')
+                ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
+                ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
+        }
+
+        if ($cliente) {
+            $qb
+                ->andWhere('s.cliente = :cliente')
+                ->setParameter('cliente', $cliente);
+        }
+
+        if ($funcionario) {
+            $qb
+                ->andWhere('s.responsavel = :funcionario')
+                ->setParameter('funcionario', $funcionario);
+        }
 
         $qb->select('SUM(s.valor)');
 
@@ -82,6 +98,7 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
 
         }
         $qb = $this->createQueryBuilder('s');
+
 
         if ($status !== null){
             $qb
@@ -126,7 +143,7 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
         }
 
         $qb
-            ->orderBy('s.createdAt', 'DESC');
+            ->orderBy('s.dataServico', 'DESC');
 
         return $qb
             ->getQuery()
@@ -185,7 +202,7 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.status = 2')
-            ->orderBy('s.createdAt', 'DESC');
+            ->orderBy('s.dataServico', 'DESC');
 
         return $qb
             ->getQuery()

@@ -24,7 +24,7 @@ class ContasPagarController extends Controller
     /**
      * @Route("/", name="conta_pagar_index")
      * @Security("has_role('ROLE_ADMINISTRADOR')")
-     * @Method({"POST", "GET"})
+     * @Method("GET")
      */
     public function indexAction(Request $request)
     {

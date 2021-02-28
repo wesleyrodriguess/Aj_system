@@ -103,6 +103,7 @@
                                             <span class="label label-danger" data-original-title="" title="">Cancelada</span>
                                         {% endif %}
                                     </td>
+                                    <td>{{ c.dataPago| date("d/m/Y") }}</td>
                                     <td>
                                         <a href="{{ path('editar_conta_pagar', {'id': c.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit text-primary"></i></span></a>
                                         <a href="{{ path('deletar_conta_pagar', {'id': c.id})  }}"><span data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fas fa-times-circle text-danger" data-toggle="tooltip" data-placement="top" title="Cancelar"></i></span></a>

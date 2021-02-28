@@ -5,6 +5,7 @@ namespace AjSystem\AdminBundle\Form;
 use AjSystem\AdminBundle\Entity\ContasAPagar;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,14 @@ class ContasAPagarType extends AbstractType
                     'A Pagar' => 2,
                 ],
             ))
+            ->add('dataPago', DateType::class, [
+                'format' => 'dd/MM/yyyy',
+                'html5' => false,
+                'widget' => 'single_text',
+                'label' => 'Data Pago',
+                'required' => false,
+                'attr' => ['class' => 'datepicker', 'autocomplete' => 'off']
+            ])
             ->add('tipo', ChoiceType::class, array(
                 'label' => 'Tipo de Conta',
                 'required' => false,

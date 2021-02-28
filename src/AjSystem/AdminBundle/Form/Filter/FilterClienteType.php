@@ -31,7 +31,8 @@ class FilterClienteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => FilterCliente::class
+            'data_class' => FilterCliente::class,
+            'method' => 'GET'
         ));
     }
 

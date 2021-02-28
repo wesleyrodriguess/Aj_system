@@ -82,7 +82,7 @@
                             <tr style="background-color: #f2f7fd">
                                 <th scope="col">Serviço</th>
                                 <th>Valor</th>
-                                <th>Solicitante</th>
+                                <th>Data</th>
                                 <th>Cliente</th>
                                 <th>Responsavel</th>
                                 <th>Status</th>
@@ -94,7 +94,7 @@
                                 <tr>
                                     <th scope="row">{{ s.nome }}</th>
                                     <th>{{ s.valor }}</th>
-                                    <th>{{ s.solicitante }}</th>
+                                    <th>{{ s.dataServico| date("d/m/Y") }}</th>
                                     <td>{% if s.cliente %}
                                             {{ s.cliente.nome}}
                                         {% endif %}

@@ -22,9 +22,6 @@ body {
     margin: 18px 0;
 }
 
-.breadcrumb>li, .pagination {
-    display: inline-block;
-}
 
 .button{
     width: 157px;
@@ -87,10 +84,6 @@ body {
     background-color: #fff;
     border: 1px solid #e0e0e0;
     padding: 50px 25px;
-}
-
-.navigation nav{
-    display: inline-block !important;
 }
 
 #sidebar-wrapper {

@@ -59,6 +59,12 @@ class ContasAPagar
     protected $valor;
 
     /**
+     * @ORM\Column(name="data_pago", type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $dataPago;
+
+    /**
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      * @var \DateTime
      */
@@ -209,6 +215,25 @@ class ContasAPagar
     public function setUpdate(){
 
         $this->updated = new \DateTime();
+    }
+
+    /**
+     * Set dataPago
+     * @param \DateTime $dataPago
+     * @return ContasAPagar
+     */
+    public function setDataPago($dataPago){
+        $this->dataPago = $dataPago;
+        return $this;
+    }
+
+    /**
+     * Get dataPago
+     * @return \DateTime
+     */
+    public function getDataPago(){
+
+        return $this->dataPago;
     }
 
     /**

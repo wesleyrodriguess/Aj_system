@@ -216,6 +216,7 @@ class Servico
 
         return $this->createdAt;
     }
+
     /**
      * Set dataServico
      * @param \DateTime $dataServico

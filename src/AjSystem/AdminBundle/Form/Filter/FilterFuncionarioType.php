@@ -23,7 +23,8 @@ class FilterFuncionarioType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => FilterFuncionario::class
+            'data_class' => FilterFuncionario::class,
+            'method' => 'GET'
         ));
     }
 
