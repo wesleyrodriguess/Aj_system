@@ -3,26 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="80e1d232-09df-4176-ab11-1f36fb2f703a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/CaixaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/CaixaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Entity/ContasAPagar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Entity/ContasAPagar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Entity/Servico.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Entity/Servico.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/ContasAPagarType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/ContasAPagarType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterClienteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterClienteType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterContasAPagarType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterContasAPagarType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterFuncionarioType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterFuncionarioType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterServicoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterServicoType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/ServicoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/ServicoType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ServicoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ServicoRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Pagar/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Pagar/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Pagar/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Pagar/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Receber/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Receber/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Servico/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Servico/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/Servico.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/Servico.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/adm.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/adm.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +17,7 @@
     <session id="-1316195772">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.17" value="1" />
@@ -83,7 +63,7 @@
           <entry key="css" value="94" />
           <entry key="js" value="17" />
           <entry key="json" value="1" />
-          <entry key="php" value="9773" />
+          <entry key="php" value="9781" />
           <entry key="twig" value="3390" />
           <entry key="yml" value="268" />
         </counts>
@@ -93,7 +73,7 @@
           <entry key="CSS" value="94" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="17" />
-          <entry key="PHP" value="9773" />
+          <entry key="PHP" value="9781" />
           <entry key="Twig" value="3390" />
           <entry key="YAML" value="268" />
         </counts>
@@ -105,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+            <state relative-caret-position="100">
+              <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -256,7 +236,6 @@
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterFuncionarioType.php" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterContasAPagarType.php" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Form/Filter/FilterClienteType.php" />
-        <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Receber/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasReceberController.php" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Entity/Servico.php" />
@@ -267,6 +246,7 @@
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Resources/views/Contas_Pagar/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php" />
         <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ServicoRepository.php" />
+        <option value="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php" />
       </list>
     </option>
   </component>
@@ -463,18 +443,17 @@
       <workItem from="1613855764344" duration="11947000" />
       <workItem from="1613990614434" duration="1192000" />
       <workItem from="1614463321841" duration="8670000" />
-      <workItem from="1614515555250" duration="14630000" />
+      <workItem from="1614515555250" duration="15143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199864000" />
+    <option name="totallyTimeSpent" value="200377000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2624811" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2624811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -487,7 +466,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" visible="true" weight="0.23278688" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" visible="true" weight="0.23278688" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.25409836" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -845,8 +824,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+        <state relative-caret-position="100">
+          <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
         </state>
       </provider>
     </entry>
