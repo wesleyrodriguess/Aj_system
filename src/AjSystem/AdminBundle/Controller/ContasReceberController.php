@@ -32,22 +32,8 @@ class ContasReceberController extends Controller
         $formFilter = $this->createForm(FilterServicoType::class, $filter);
         $formFilter->handleRequest($request);
 
-        if ($formFilter->isSubmitted() and $formFilter->isValid()) {
-            $servicos = $this->getServicoService()
-                ->getFilterServico(
-                    2,
-                    $filter->getDataDe(),
-                    $filter->getDataAt(),
-                    $filter->getCliente(),
-                    $filter->getResponsavel(),
-                    $filter->getNome(),
-                    $filter->getSolicitante()
-                );
-        }else {
-            $servicos = $this->getDoctrine()
-                ->getRepository(Servico::class)
-                ->findServicoReceber();
-        }
+        $filter->setStatus(2);
+        $servicos = $this->getServicoService()->getFilterServico($filter);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -61,19 +47,10 @@ class ContasReceberController extends Controller
         );
 
     }
-    private function getFuncionarioService()
-    {
-        return $this->get('ajsystem_admin.funcionario');
-    }
 
     private function getServicoService()
     {
         return $this->get('ajsystem_admin.servico');
-    }
-
-    private function getClienteService()
-    {
-        return $this->get('ajsystem_admin.cliente');
     }
 
 }

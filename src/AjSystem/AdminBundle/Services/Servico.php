@@ -2,6 +2,7 @@
 
 namespace AjSystem\AdminBundle\Services;
 
+use AjSystem\AdminBundle\Entity\Filter\FilterServico;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
@@ -17,46 +18,51 @@ class Servico
         $this->tokenStorage = $tokenStorage;
     }
 
-    public function getFilterServico(
-        $status = null,
-        $dataDe = null,
-        $dataAt = null,
-        $cliente = null,
-        $funcionario = null,
-        $nome = null,
-        $solicitante = null)
+    /**
+     * @param FilterServico $filter
+     * @param bool $isQuery
+     * @return mixed
+     */
+    public function getFilterServico(FilterServico $filter, $isQuery = false)
     {
         return $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
-            ->findServico($status, $dataDe, $dataAt, $cliente, $funcionario, $nome,$solicitante);
+            ->findServico($filter, $isQuery);
     }
 
+    /**
+     * @return mixed
+     */
     public function getCaixa(){
-        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+        return $valor = $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
             ->findCaixa();
-
-        return $valor[0][1];
     }
 
-    public function getCaixaMensal($inicioMes = null, $fimMes = null, $cliente = null, $funcionario = null){
+    /**
+     * @param FilterServico $filter
+     * @return mixed
+     */
+    public function getCaixaMensal(FilterServico $filter){
 
-        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
-            ->findCaixaMensal($inicioMes, $fimMes, $cliente, $funcionario);
-
-        return $valor[0][1];
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findCaixaMensal($filter);
     }
 
+    /**
+     * @return mixed
+     */
     public function getReceber(){
-        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
-            ->findReceber();
 
-        return $valor[0][1];
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findReceber();
     }
 
+    /**
+     * @return mixed
+     */
     public function getTotal(){
-        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
-            ->findTotal();
 
-        return $valor[0][1];
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\Servico::class)
+            ->findTotal();
     }
 
 }

@@ -33,30 +33,9 @@ class ServicoController extends Controller
         $formFilter = $this->createForm(FilterServicoType::class, $filter);
         $formFilter->handleRequest($request);
 
-        $valorServico = 0;
+        $valorServico = $this->getServicoService()->getCaixaMensal($filter);
 
-        if ($formFilter->isSubmitted() and $formFilter->isValid()) {
-            $servicos = $this->getServicoService()
-                ->getFilterServico(
-                    $filter->getStatus(),
-                    $filter->getDataDe(),
-                    $filter->getDataAt(),
-                    $filter->getCliente(),
-                    $filter->getResponsavel(),
-                    $filter->getNome(),
-                    $filter->getSolicitante()
-                );
-            $valorServico = $this->getServicoService()
-                ->getCaixaMensal(
-                    $filter->getDataDe(),
-                    $filter->getDataAt(),
-                    $filter->getCliente(),
-                    $filter->getResponsavel());
-        }else {
-            $servicos = $this->getDoctrine()
-                ->getRepository(Servico::class)
-                ->findServicoAll();
-        }
+        $servicos = $this->getServicoService()->getFilterServico($filter, true);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

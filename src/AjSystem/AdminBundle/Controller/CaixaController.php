@@ -30,6 +30,7 @@ class CaixaController extends Controller
     {
 
         $filter = new FilterServico();
+        $filterCaixa = new FilterServico();
         $formFilter = $this->createForm(FilterServicoType::class, $filter);
         $formFilter->handleRequest($request);
 
@@ -48,26 +49,16 @@ class CaixaController extends Controller
 
         $inicioMes = new \DateTime(''.$inicioMes[0].'-'.$inicioMes[1].'-'.$inicioMes[2].'');
         $fimMes = new \DateTime(''.$fimMes[0].'-'.$fimMes[1].'-'.$fimMes[2].'');
-        $caixaMensal = $this->getServicoService()->getCaixaMensal($inicioMes, $fimMes);
+
+        $filterCaixa->setDataDe($inicioMes);
+        $filterCaixa->setDataAt($fimMes);
+        $caixaMensal = $this->getServicoService()->getCaixaMensal($filterCaixa);
 
         if ($formFilter->isSubmitted() and $formFilter->isValid()) {
-            $servicos = $this->getServicoService()
-                ->getFilterServico(
-                    $filter->getStatus(),
-                    $filter->getDataDe(),
-                    $filter->getDataAt(),
-                    $filter->getCliente(),
-                    $filter->getResponsavel(),
-                    $filter->getNome(),
-                    $filter->getSolicitante()
-                );
-            $caixaMensal = $this->getServicoService()->getCaixaMensal($filter->getDataDe(), $filter->getDataAt());
-
-        }else {
-            $servicos = $this->getDoctrine()
-                ->getRepository(Servico::class)
-                ->findServicoAll();
+            $caixaMensal = $this->getServicoService()->getCaixaMensal($filter);
         }
+
+        $servicos = $this->getServicoService()->getFilterServico($filter, true);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -85,10 +76,6 @@ class CaixaController extends Controller
             'formFilter' => $formFilter->createView()
         );
 
-    }
-    private function getFuncionarioService()
-    {
-        return $this->get('ajsystem_admin.funcionario');
     }
 
     private function getServicoService()
