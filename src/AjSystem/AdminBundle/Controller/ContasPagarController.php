@@ -33,20 +33,7 @@ class ContasPagarController extends Controller
         $formFilter = $this->createForm(FilterContasAPagarType::class, $filter);
         $formFilter->handleRequest($request);
 
-        if ($formFilter->isSubmitted() and $formFilter->isValid()) {
-            $contas = $this->getContasService()
-                ->getFilterConta(
-                    $filter->getStatus(),
-                    $filter->getDataDe(),
-                    $filter->getDataAt(),
-                    $filter->getTipo(),
-                    $filter->getFuncionario()
-                );
-        }else {
-            $contas = $this->getDoctrine()
-                ->getRepository(ContasAPagar::class)
-                ->findContaAll();
-        }
+        $contas = $this->getContasService()->getFilterConta($filter, true);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

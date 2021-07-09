@@ -2,6 +2,7 @@
 
 namespace AjSystem\AdminBundle\Services;
 
+use AjSystem\AdminBundle\Entity\Filter\FilterContasAPagar;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
@@ -17,29 +18,21 @@ class ContaPagar
         $this->tokenStorage = $tokenStorage;
     }
 
-    public function getFilterConta(
-        $status = null,
-        $dataDe = null,
-        $dataAt = null,
-        $tipo = null,
-        $funcionario = null)
+    public function getFilterConta(FilterContasAPagar $filter, $isQuery = false)
     {
         return $this->em->getRepository(\AjSystem\AdminBundle\Entity\ContasAPagar::class)
-            ->findConta($status, $dataDe, $dataAt, $tipo, $funcionario);
+            ->findConta($filter, $isQuery);
     }
 
     public function getAPagar(){
-        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\ContasAPagar::class)
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\ContasAPagar::class)
             ->findPagar();
 
-        return $valor[0][1];
     }
 
     public function getPago(){
-        $valor =  $this->em->getRepository(\AjSystem\AdminBundle\Entity\ContasAPagar::class)
+        return $this->em->getRepository(\AjSystem\AdminBundle\Entity\ContasAPagar::class)
             ->findPago();
-
-        return $valor[0][1];
     }
 
 }

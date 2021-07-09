@@ -2,7 +2,9 @@
 
 namespace AjSystem\AdminBundle\Repository;
 
+use AjSystem\AdminBundle\Entity\Filter\FilterContasAPagar;
 use AjSystem\AdminBundle\Entity\Funcionario;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * ContasAPagarRepository
@@ -12,14 +14,27 @@ use AjSystem\AdminBundle\Entity\Funcionario;
  */
 class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findContaAll(){
+
+    /**
+     * @param FilterContasAPagar $filter
+     * @param bool $isQuery
+     * @return mixed
+     */
+    public function findConta(FilterContasAPagar $filter, $isQuery = false){
 
         $qb = $this->createQueryBuilder('c');
 
-        $qb-> where('c.status !=0');
-        $qb
-            ->orderBy('c.dataPago', 'ASC');
+        $qb = $this->builderQuery($qb, $filter);
 
+        $qb
+            ->orderBy('c.dataPago', 'DESC');
+
+        if ($isQuery)
+        {
+            return $qb
+                ->getQuery()
+                ->useQueryCache(true);
+        }
         return $qb
             ->getQuery()
             ->useQueryCache(true)
@@ -28,63 +43,10 @@ class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
-     * @param \DateTime|null $dataDe
-     * @param \DateTime|null $dataAt
-     * @param Funcionario|null $funcionario
-     * @param null $tipo
-     * @param null $status
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findConta(
-        $status = null,
-        \DateTime $dataDe = null,
-        \DateTime $dataAt = null,
-        $tipo = null,
-        Funcionario $funcionario = null
-    ){
-        try {
-            $emConfig = $this->getEntityManager()->getConfiguration();
-            $emConfig->addCustomDatetimeFunction('date', 'DoctrineExtensions\Query\Mysql\Date');
-        } catch (\Exception $e) {
-
-        }
-        $qb = $this->createQueryBuilder('c');
-
-        if ($status !== null){
-            $qb
-                ->where('c.status = :status')
-                ->setParameter('status', $status);
-        }
-
-        if ($dataDe and $dataAt){
-            $qb
-                ->andWhere('c.dataPago >= :dataDe')
-                ->andWhere('c.dataPago <= :dataAt')
-                ->setParameter('dataDe', $dataDe->format('Y-m-d'.' '.'00:00:00'))
-                ->setParameter('dataAt', $dataAt->format('Y-m-d'.' '.'23:59:59'));
-        }
-
-        if ($tipo){
-            $qb
-                ->andWhere('c.tipo = :tipo')
-                ->setParameter('tipo', $tipo);
-        }
-
-        if ($funcionario){
-            $qb
-                ->andWhere('c.funcionario = :funcionario')
-                ->setParameter('funcionario', $funcionario);
-        }
-
-        $qb
-            ->orderBy('c.dataPago', 'DESC');
-
-        return $qb
-            ->getQuery()
-            ->useQueryCache(true)
-            ->useResultCache(true)
-            ->getResult();
-    }
-
     public function findPagar(){
 
         $qb = $this->createQueryBuilder('c');
@@ -96,10 +58,14 @@ class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
         return $qb
             ->getQuery()
             ->useQueryCache(true)
-            ->useResultCache(true)
-            ->getResult();
+            ->getSingleScalarResult();
     }
 
+    /**
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findPago(){
 
         $qb = $this->createQueryBuilder('c');
@@ -111,7 +77,52 @@ class ContasAPagarRepository extends \Doctrine\ORM\EntityRepository
         return $qb
             ->getQuery()
             ->useQueryCache(true)
-            ->useResultCache(true)
-            ->getResult();
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param FilterContasAPagar $filter
+     * @return QueryBuilder
+     */
+    public function builderQuery(QueryBuilder $qb, FilterContasAPagar $filter)
+    {
+        try {
+            $emConfig = $this->getEntityManager()->getConfiguration();
+            $emConfig->addCustomDatetimeFunction('date', 'DoctrineExtensions\Query\Mysql\Date');
+        } catch (\Exception $e) {
+        }
+
+        if ($filter->getStatus() !== null){
+            $qb
+                ->where('c.status = :status')
+                ->setParameter('status', $filter->getStatus());
+        }
+
+        if ($filter->getDataDe()){
+            $qb
+                ->andWhere('c.dataPago >= :dataDe')
+                ->setParameter('dataDe', $filter->getDataDe()->format('Y-m-d'.' '.'00:00:00'));
+        }
+
+        if ($filter->getDataAt()){
+            $qb
+                ->andWhere('c.dataPago <= :dataAt')
+                ->setParameter('dataAt', $filter->getDataAt()->format('Y-m-d'.' '.'23:59:59'));
+        }
+
+        if ($filter->getTipo()){
+            $qb
+                ->andWhere('c.tipo = :tipo')
+                ->setParameter('tipo', $filter->getTipo());
+        }
+
+        if ($filter->getFuncionario()){
+            $qb
+                ->andWhere('c.funcionario = :funcionario')
+                ->setParameter('funcionario', $filter->getFuncionario());
+        }
+
+        return $qb;
     }
 }
