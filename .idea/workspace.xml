@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80e1d232-09df-4176-ab11-1f36fb2f703a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/ContaPagar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/ContaPagar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,12 +17,12 @@
     <session id="-1316195772">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="2" />
-          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.22" value="1" />
@@ -36,7 +34,7 @@
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,7 +43,7 @@
           <entry key="gitignore" value="2" />
           <entry key="js" value="24" />
           <entry key="json" value="7" />
-          <entry key="php" value="280" />
+          <entry key="php" value="282" />
           <entry key="ts" value="1" />
           <entry key="twig" value="116" />
           <entry key="yml" value="36" />
@@ -56,7 +54,7 @@
           <entry key="CSS" value="18" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="24" />
-          <entry key="PHP" value="280" />
+          <entry key="PHP" value="282" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Twig" value="116" />
           <entry key="TypeScript" value="1" />
@@ -92,17 +90,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="35" column="75" lean-forward="true" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
+            <state relative-caret-position="380">
+              <caret line="35" column="75" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/ContaPagar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="29" column="8" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+            <state relative-caret-position="540">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="e#49#107#0#PHP" expanded="true" />
               </folding>
@@ -113,11 +111,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+            <state relative-caret-position="1160">
+              <caret line="87" column="20" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="20" />
               <folding>
                 <element signature="e#51#109#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ServicoRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+              <folding>
+                <element signature="e#51#91#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="37" column="64" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -360,14 +379,6 @@
               <item name="AdminBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Repository" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="aj_system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aj_system" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AjSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="AdminBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Services" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -434,18 +445,18 @@
       <workItem from="1614515555250" duration="15143000" />
       <workItem from="1614612207218" duration="941000" />
       <workItem from="1621166319405" duration="1111000" />
-      <workItem from="1625866824920" duration="6277000" />
+      <workItem from="1625866824920" duration="6789000" />
+      <workItem from="1627832036069" duration="231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208706000" />
+    <option name="totallyTimeSpent" value="209463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20953101" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21255673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -458,7 +469,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" visible="true" weight="0.23278688" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" visible="true" weight="0.23278688" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.25409836" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -742,23 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ServicoRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3040">
-          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="e#51#91#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="37" column="80" selection-start-line="37" selection-start-column="80" selection-end-line="37" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/Servico.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -773,9 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="e#45#90#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -786,29 +777,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="35" column="75" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/ContaPagar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#49#107#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ContasAPagarRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+        <state relative-caret-position="1160">
+          <caret line="87" column="20" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="20" />
           <folding>
             <element signature="e#51#109#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ContasPagarController.php">
+    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Controller/ServicoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="35" column="75" lean-forward="true" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
+        <state relative-caret-position="160">
+          <caret line="37" column="64" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Services/ContaPagar.php">
+    <entry file="file://$PROJECT_DIR$/src/AjSystem/AdminBundle/Repository/ServicoRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="29" column="8" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        <state relative-caret-position="320">
+          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
           <folding>
-            <element signature="e#49#107#0#PHP" expanded="true" />
+            <element signature="e#51#91#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

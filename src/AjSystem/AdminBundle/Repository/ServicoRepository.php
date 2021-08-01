@@ -44,6 +44,7 @@ class ServicoRepository extends \Doctrine\ORM\EntityRepository
     public function findServico(FilterServico $filter, $isQuery = false)
     {
         $qb = $this->createQueryBuilder('s');
+        $qb->where('s.status != 0');
 
         $qb = $this->builderQuery($qb, $filter);
 
